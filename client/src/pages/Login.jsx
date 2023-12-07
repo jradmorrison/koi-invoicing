@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import {LOGIN_BUSINESS, LOGIN_USER} from '../utils/mutations';
+import {LOGIN_BUSINESS} from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const Login = (props) => {
+const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [loginBusiness, { error, data }] = useMutation(LOGIN_BUSINESS);
 
