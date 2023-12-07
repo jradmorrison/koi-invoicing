@@ -1,5 +1,6 @@
 const Business = require('../../models/Business');
 const { Types: { ObjectId } } = require('mongoose');
+const {signToken} = require('../../utils/auth');
 const businessResolver  = {
   Query: {
     getBusinessByID: async (_, {ID}) => {
@@ -30,8 +31,9 @@ const businessResolver  = {
           clients: [],
           createdAt: new Date().toISOString(),
         }
-        const business = new Business(newBusiness);
-        return await business.save();
+        const business = await Business.create(newBusiness);
+        const token = signToken(business);
+        return {token, business};
       } catch (err) {
         throw new Error(`Error creating business: ${err.message}`);
       }

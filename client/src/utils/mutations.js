@@ -43,3 +43,15 @@ export const REMOVE_SKILL = gql`
     }
   }
 `;
+
+export const CREATE_BUSINESS = gql`
+    mutation CreateBusiness($businessInput: BusinessInput!) {
+        createBusiness(businessInput: $businessInput) {
+            token
+            business {
+                id
+                name
+            }
+        }
+    }
+`;
