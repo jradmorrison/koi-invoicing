@@ -1,11 +1,10 @@
-const {gql} = require('apollo-server');
-
 const businessTypeDefs= require('./typedefs/businessTypeDefs');
 const serviceTypeDefs= require('./typedefs/serviceTypeDefs');
 const clientTypeDefs= require('./typedefs/clientTypeDefs');
 const contractTypeDefs= require('./typedefs/contractTypeDefs');
 const invoiceTypeDefs= require('./typedefs/invoiceTypeDefs');
-module.exports = gql`
+
+module.exports = `
     ${businessTypeDefs}
     ${serviceTypeDefs}
     ${clientTypeDefs}

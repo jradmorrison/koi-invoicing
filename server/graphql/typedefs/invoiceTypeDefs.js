@@ -1,6 +1,4 @@
-const { gql } = require('apollo-server');
-
-module.exports = gql`
+module.exports = `
     type Invoice {
         id: ID
         businessID: String
