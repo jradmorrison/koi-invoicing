@@ -4,8 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
+import Signup from './pages/Signup/Signup.jsx';
+import Login from './pages/Login/Login.jsx';
 import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([

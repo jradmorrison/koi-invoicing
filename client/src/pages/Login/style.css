@@ -1,0 +1,15 @@
+#login {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    /* opacity: 0.5; */
+}
+
+.heading {
+    color: var(--navyBlue);
+    font-size: 6rem;
+}
+
+.sub-heading {
+    color: var(--light);
+    font-size: 3rem;
+}

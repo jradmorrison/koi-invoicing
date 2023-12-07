@@ -1,4 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -34,7 +36,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Outlet />
+      <div className='background'>
+        <Outlet />
+      </div>
     </ApolloProvider>
   );
 }
