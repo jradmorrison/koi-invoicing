@@ -1,5 +1,5 @@
-const Contract = require('../../../koi-invoicing/server/models/Contract')
-const Service = require('../../../koi-invoicing/server/models/Service');
+const Contract = require('../../models/Contract')
+const Service = require('../../models/Service');
 const { Types: { ObjectId } } = require('mongoose');
 
 const contractResolver  = {

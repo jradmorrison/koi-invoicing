@@ -1,4 +1,4 @@
-const Business = require('../../../koi-invoicing/server/models/Business');
+const Business = require('../../models/Business');
 const { Types: { ObjectId } } = require('mongoose');
 const businessResolver  = {
   Query: {
