@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client';
 
-
 import { QUERY_PROFILES } from '../utils/queries';
 
 const Home = () => {
@@ -10,6 +9,7 @@ const Home = () => {
   return (
     <main>
       
+
     </main>
   );
 };
