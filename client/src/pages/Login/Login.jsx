@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations';
+import {LOGIN_BUSINESS} from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
 import './style.css';
 
-const Login = (props) => {
+const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [loginBusiness, { error }] = useMutation(LOGIN_BUSINESS);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -26,21 +25,20 @@ const Login = (props) => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await login({
+      const { data } = await loginBusiness({
         variables: { ...formState },
       });
-
-      Auth.login(data.login.token);
+      
+      Auth.login(data.loginBusiness.token);
     } catch (e) {
       console.error(e);
     }
-
+    
     // clear form values
     setFormState({
       email: '',
       password: '',
     });
-    // document.location.replace('/');
   };
 
   return (
