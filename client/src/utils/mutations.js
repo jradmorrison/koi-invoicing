@@ -55,3 +55,15 @@ export const CREATE_BUSINESS = gql`
         }
     }
 `;
+
+export const LOGIN_BUSINESS = gql`
+    mutation Mutation($email: String!, $password: String!) {
+        loginBusiness(email: $email, password: $password) {
+            token
+            business {
+                id
+                name
+            }
+        }
+    }
+`;

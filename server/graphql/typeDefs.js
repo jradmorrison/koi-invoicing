@@ -38,6 +38,8 @@ module.exports = `
         updateBusiness(ID : ID!, businessUpdate: BusinessUpdate!): Business!
         deleteBusiness(ID : ID!): Business!
         
+        loginBusiness(email: String!, password: String!): Auth
+        
         createService(serviceInput: ServiceInput!): Service!
         updateService(ID : ID!, serviceUpdate: ServiceUpdate!): Service!
         deleteService(ID : ID!): Service!
