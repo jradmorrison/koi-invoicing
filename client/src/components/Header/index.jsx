@@ -12,7 +12,7 @@ const Header = () => {
   };
   return (
     <header>
-      <nav className="navbar bg-body-tertiary">
+      <nav className="navbar bg-body-tertiary bg-primary-subtle">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             <img

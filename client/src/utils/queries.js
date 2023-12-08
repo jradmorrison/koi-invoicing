@@ -36,7 +36,7 @@ query Query($id: ID!) {
 
 export const QUERY_INVOICES_BY_BUSINESS = gql`
   query getInvoiceByBusiness($businessId: ID!) {
-    getInvoiceByBusiness(businessID: $businessId) {
+    getInvoiceByBusiness(businessId: $businessId) {
       _id
       clientEmail
       dateDue
