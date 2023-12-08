@@ -1,9 +1,8 @@
 // import mongoose
 const mongoose = require('mongoose');
-
+require('dotenv').config();
 // mongo cloud db 
-const MONGODB = 'mongodb+srv://Admin:4ZPDkjqy5r9ivpEG@koidb.1avsswf.mongodb.net/?retryWrites=true&w=majority';
-
+const MONGODB = process.env.MONGODB;
 // connect to db
 mongoose.connect(MONGODB)
 

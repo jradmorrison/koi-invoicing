@@ -4,6 +4,7 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 
+
 const typeDefs = require("./graphql/typeDefs.js")
 const resolvers = require("./graphql/resolvers.js")
 
@@ -43,3 +44,4 @@ const startApolloServer = async () => {
 };
 
 startApolloServer();
+
