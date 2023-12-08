@@ -1,5 +1,7 @@
 // import model
 const Invoice = require('../../models/Invoice')
+const Business = require('../../models/Business')
+const mail = require('../../utils/nodemailer')
 
 // import mongoose
 const { Types: { ObjectId } } = require('mongoose');
@@ -23,10 +25,10 @@ const invoiceResolver = {
       }
     },
 
-    // read invcoice by business
-    getInvoiceByBusiness: async (_, { businessID }) => {
+    // read invoice by business
+    getInvoiceByBusiness: async (_, { businessId }) => {
       try {
-        const invoices = await Invoice.find({ businessID });
+        const invoices = await Invoice.find({ businessId });
 
         if (!invoices || invoices.length === 0) {
           throw new Error('business not found or invoices unavailable');
@@ -42,10 +44,12 @@ const invoiceResolver = {
   // queries
   Mutation: {
     // create invoice
-    createInvoice: async (_, { ID, invoiceInput: { businessID, clientEmail, totalBalance, status, dateDue, serviceProvided } }) => {
+    createInvoice: async (_, {invoiceInput: { businessId, clientEmail, totalBalance, status, dateDue, serviceProvided } }) => {
       try {
+        const now = new Date().toISOString();
+        const business = await Business.findById(new ObjectId(businessId))
         const newInvoice = {
-          businessID,
+          businessId,
           clientEmail,
           totalBalance,
           status,
@@ -53,6 +57,26 @@ const invoiceResolver = {
           serviceProvided
         }
         const invoice = new Invoice(newInvoice);
+        
+        //TODO Generate Stripe Invoice
+        //TODO Send Email to Client done
+        //TODO Edit EmailPackage
+        const EmailPackage = {
+          from: business.name,
+          fromEmail: business.email,
+          to: "Client Name",
+          toEmail: clientEmail,
+          invoice: `Invoice #${invoice._id}`,
+          invoiceDate: now,
+          paymentDueDate: dateDue.toString(),
+          totalAmount: totalBalance.toString(),
+          taxes: "0.00",
+          totalDue: totalBalance.toString(),
+          desc: serviceProvided,
+        }
+        
+        mail(EmailPackage);
+        
         return await invoice.save();
       } catch (err) {
         throw new Error(`Error creating invoice: ${err.message}`);

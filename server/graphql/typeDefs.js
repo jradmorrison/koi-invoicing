@@ -14,25 +14,25 @@ module.exports = `
     ${invoiceTypeDefs}
     
     type Auth {
-    token: ID!
-    business: Business
+        token: ID!
+        business: Business
     }
     
     type Query {
         getBusinessByID(ID : ID!): Business!
         
         getServiceByID(ID : ID!): Service!
-        getServicesByBusiness(businessID : ID!): [Service]
+        getServicesByBusiness(businessId : ID!): [Service]
         
         getClientByID(ID: ID!): Client!
-        getClientsByBusiness(businessID: ID!): [Client]
+        getClientsByBusiness(businessId: ID!): [Client]
         
         getContractByID(ID : ID!): Contract!
-        getContractsByBusiness(businessID : ID!): [Contract]
-        getContractsByClient(clientID : ID!): [Contract]
+        getContractsByBusiness(businessId : ID!): [Contract]
+        getContractsByClient(clientId : ID!): [Contract]
         
         getInvoiceByID(ID : ID!): Invoice!
-        getInvoiceByBusiness(businessID: ID!): [Invoice]
+        getInvoiceByBusiness(businessId: ID!): [Invoice]
     }
  
     type Mutation {
