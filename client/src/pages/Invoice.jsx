@@ -2,6 +2,9 @@ import { Navigate } from 'react-router-dom';
 import Auth from '../utils/auth';
 import Button from '@mui/material/Button';
 
+// import packages
+import { PDFExport, savePDF } from "@progress/kendo-react-pdf"
+
 // import packages for pdf export 
 import { useRef } from "react"
 
@@ -53,7 +56,9 @@ const Invoice = () => {
       </div>
 
       <div style={{ display: "flex", justifyContent: "center", padding: "2rem" }}>
-        <InvoiceToPDF invoice={demoInvoice} extras={pdfExportComponent} />
+        <PDFExport ref={pdfExportComponent} paperSize="A4">
+          <InvoiceToPDF invoice={demoInvoice} extras={pdfExportComponent} />
+        </PDFExport >
         <div style={{ display: "flex", flexDirection: "column", paddingTop: "16rem" }}>
           <div style={{ display: "flex", flexDirection: "column", color: "#D9D9D9" }}>
             <h1 style={{ fontSize: "3rem", padding: "0" }}>Invoice - {demoInvoice.businessID}</h1>
