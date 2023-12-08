@@ -1,6 +1,39 @@
 // import apollo client
 import { gql } from '@apollo/client';
 
+export const GET_ONE_BUSINESS = gql`
+query Query($id: ID!) {
+  getBusinessByID(ID: $id) {
+    _id
+    name
+    email
+    companyLogo
+    userSince
+    invoices {
+      _id
+      clientEmail
+      dateDue
+      serviceProvided
+      status
+      totalBalance
+    }
+  }
+}
+`;
+
+export const GET_ONE_INVOICE = gql`
+query Query($id: ID!) {
+  getInvoiceByID(ID: $id) {
+    _id
+    clientEmail
+    dateDue
+    serviceProvided
+    status
+    totalBalance
+  }
+}
+`;
+
 export const QUERY_INVOICES_BY_BUSINESS = gql`
   query getInvoiceByBusiness($businessId: ID!) {
     getInvoiceByBusiness(businessID: $businessId) {
@@ -14,35 +47,13 @@ export const QUERY_INVOICES_BY_BUSINESS = gql`
   }
 `;
 
-// query profiles
-export const QUERY_PROFILES = gql`
-  query allProfiles {
-    profiles {
-      _id
-      name
-      skills
-    }
-  }
-`;
-
-// query profile
-export const QUERY_SINGLE_PROFILE = gql`
-  query singleProfile($profileId: ID!) {
-    profile(profileId: $profileId) {
-      _id
-      name
-      skills
-    }
-  }
-`;
-
 // query user profile
-export const QUERY_ME = gql`
-  query me {
-    me {
-      _id
-      name
-      skills
-    }
-  }
-`;
+// export const QUERY_ME = gql`
+//   query me {
+//     me {
+//       _id
+//       name
+//       skills
+//     }
+//   }
+// `;
