@@ -1,8 +1,13 @@
+// import location and nav hooks 
 import { useLocation, useNavigate } from 'react-router-dom';
 
+// footer component
 const Footer = () => {
+  // use hooks
   const location = useLocation();
   const navigate = useNavigate();
+
+  // return 
   return (
     <footer className="w-100 mt-auto text-dark p-4">
       <div className="container text-center mb-5">
@@ -20,4 +25,5 @@ const Footer = () => {
   );
 };
 
+// export footer
 export default Footer;

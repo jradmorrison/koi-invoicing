@@ -1,13 +1,24 @@
+// import state
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import {LOGIN_BUSINESS} from '../../utils/mutations';
 
+// import mutation hook
+import { useMutation } from '@apollo/client';
+
+// import mutations
+import { LOGIN_BUSINESS } from '../../utils/mutations';
+
+;// import authentication 
 import Auth from '../../utils/auth';
 
+// import stylesheet
 import './style.css';
 
+// login component
 const Login = () => {
+  // state
   const [formState, setFormState] = useState({ email: '', password: '' });
+
+  // mutation 
   const [loginBusiness, { error }] = useMutation(LOGIN_BUSINESS);
 
   // update state based on form input changes
@@ -28,12 +39,12 @@ const Login = () => {
       const { data } = await loginBusiness({
         variables: { ...formState },
       });
-      
+
       Auth.login(data.loginBusiness.token);
     } catch (e) {
       console.error(e);
     }
-    
+
     // clear form values
     setFormState({
       email: '',
@@ -41,6 +52,7 @@ const Login = () => {
     });
   };
 
+  // return
   return (
     <main className="d-flex justify-content-center align-items-center min-vh-100 flex-column">
       <div id="login" className="p-3 rounded-5 col-lg-3 col-md-6 col-10">
@@ -89,4 +101,5 @@ const Login = () => {
   );
 };
 
+// export login 
 export default Login;
