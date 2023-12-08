@@ -1,19 +1,6 @@
 const nodemailer = require('nodemailer');
 
-//package that needs sent to mail()
-const inputEmailPackage = {
-  from: "Devengers",
-  fromEmail: "noreply@devengers.com",
-  to: "Brandon Barnes",
-  toEmail: "imbrandonbarnes@gmail.com",
-  invoice: "Invoice #93192",
-  invoiceDate: "2023-12-08",
-  paymentDueDate: "2023-12-18",
-  totalAmount: "1000.00",
-  taxes: "50.00",
-  totalDue: "1050.00",
-  desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-}
+require('dotenv').config();
 
 const html = (EmailPackage) => `
   <div style="background-color: #FFFFFF; color: #000000; padding: 1rem; width: 35rem; height: 50rem;">
@@ -84,9 +71,8 @@ const transporter = nodemailer.createTransport({
   },
   debug: true, // Add this line for debug output
 });
-
-console.log(transporter);
 async function mail(emailPackage) {
+  console.log(transporter);
 
   try {
     const info = await transporter.sendMail({
@@ -102,4 +88,4 @@ async function mail(emailPackage) {
   }
 }
 
-mail(inputEmailPackage);
+module.exports = mail;
