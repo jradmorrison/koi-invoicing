@@ -1,11 +1,12 @@
 module.exports = `
     type Business {
-        id: ID
+        _id: ID
         name: String
         email: String
         password: String
         companyLogo: String
-        createdAt: String
+        userSince: String
+        invoices: [Invoice]
     }
 
     input BusinessInput {

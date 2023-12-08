@@ -14,7 +14,7 @@ const businessResolver = {
     // read business by ID
     getBusinessByID: async (_, { ID }) => {
       try {
-        const business = await Business.findById(new ObjectId(ID));
+        const business = await Business.findById(new ObjectId(ID)).populate('invoices');
 
         if (!business) {
           throw new Error('Business not found');
@@ -25,7 +25,6 @@ const businessResolver = {
         throw new Error(`Error getting business: ${err.message}`);
       }
     },
-
   },
 
   // mutations
@@ -38,10 +37,7 @@ const businessResolver = {
           email,
           password,
           companyLogo,
-          services: [],
-          contracts: [],
-          clients: [],
-          createdAt: new Date().toISOString(),
+          userSince: new Date().toISOString(),
         }
         const business = await Business.create(newBusiness);
         const token = signToken(business);

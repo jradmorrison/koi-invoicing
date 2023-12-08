@@ -3,11 +3,36 @@ const { model, Schema} = require('mongoose');
 
 // invoice schema
 const invoiceSchema = new Schema({
-  businessID: String,
-  clientEmail: String,
-  totalBalance: String,
-  taxes: String,
-  status: String,
+  businessId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Business',
+    required: true,
+  },
+  clientEmail: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/.+@.+\..+/, 'Must match an email address!'],
+  },
+  totalBalance: {
+    type: Number,
+    required: true,
+  },
+  status: {
+    type: String, 
+    required: true,
+    default: "PENDING",
+  },
+  dateDue: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
+  serviceProvided: {
+    type: String,
+    required: true,
+    default: "",
+  },
 });
 
 // export invoice schema

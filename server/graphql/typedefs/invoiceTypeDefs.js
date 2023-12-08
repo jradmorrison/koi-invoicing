@@ -1,23 +1,28 @@
 module.exports = `
     type Invoice {
-        id: ID
-        businessID: String
+        _id: ID
+        businessID: ID
         clientEmail: String
-        totalBalance: String
-        taxes: String
+        totalBalance: Float
         status: String
+        dateDue: String
+        serviceProvided: String
     }
 
     input InvoiceInput {
-        businessID: String
+        businessID: ID
         clientEmail: String
-        totalBalance: String
-        taxes: String
+        totalBalance: Float
         status: String
+        dateDue: String
+        serviceProvided: String
     }
 
     input InvoiceUpdate {
-        totalBalance: String
+        clientEmail: String
+        totalBalance: Float
         status: String
+        dateDue: String
+        serviceProvided: String
     }
 `;
