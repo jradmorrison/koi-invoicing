@@ -14,8 +14,8 @@ module.exports = `
     ${invoiceTypeDefs}
     
     type Auth {
-    token: ID!
-    business: Business
+        token: ID!
+        business: Business
     }
     
     type Query {
