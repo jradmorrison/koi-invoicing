@@ -1,19 +1,8 @@
-// import packages for pdf export 
+// import packages
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf"
-import { useRef } from "react"
 
 // invoice component
-const InvoiceToPDF = ({ invoice: { invoiceID, businessID, clientEmail, totalBalance, status, dateDue, serviceProvided, createdOn } }) => {
-    // for exporting to pdf
-    const pdfExportComponent = useRef(null);
-    const handleExportComponent = (event) => {
-        pdfExportComponent.current.save()
-    }
-
-    // TODO: handle stripe checkout
-    const handleMakePayment = (event) => {
-        event.preventDefault();
-    }
+const InvoiceToPDF = ({ invoice: { invoiceID, businessID, clientEmail, totalBalance, status, dateDue, serviceProvided, createdOn }, extras: { pdfExportComponent}}) => {
 
     // TODO: make qurery to db to get business name from id
     const businessName = ""
@@ -81,19 +70,6 @@ const InvoiceToPDF = ({ invoice: { invoiceID, businessID, clientEmail, totalBala
                         </footer>
                     </div>
                 </PDFExport >
-            </div>
-            <div style={{display: "flex", flexDirection: "column", paddingTop: "16rem"}}>
-                <div style={{display:"flex", flexDirection: "column", color: "#D9D9D9"}}>
-                    <h1 style={{fontSize: "3rem", padding: "0"}}>Invoice - {businessID}</h1>
-                    <p style={{fontSize: "1.5rem", padding: "0", margin: "0"}}>Date Billed: {createdOn}</p>
-                    <p style={{fontSize: "1.5rem", padding: "0", marginTop: "0"}}>Ref ID: {invoiceID}</p>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "#D9D9D9", padding: "1rem", borderRadius: ".3rem", minWidth: "20rem", minHeight: "4rem", marginBottom: "3rem"}}>
-                    <p>Due {dateDue}</p>
-                    <h4>${totalBalance}</h4>
-                </div>
-                <button onClick={handleExportComponent} style={{ padding: ".5rem", borderRadius: "1rem", backgroundColor: "#FDC447", marginBottom: "1rem", textAlign: "center", color: "#010144"}}>Export to PDF</button>
-                <button onClick={handleMakePayment} style={{ padding: ".5rem", borderRadius: "1rem", backgroundColor: "#FDC447", color: "#010144"}}>Make Payment</button>
             </div>
         </div>
     );
