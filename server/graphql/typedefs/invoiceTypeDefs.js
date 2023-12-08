@@ -1,7 +1,7 @@
 module.exports = `
     type Invoice {
         _id: ID
-        businessID: ID
+        businessId: ID
         clientEmail: String
         totalBalance: Float
         status: String
@@ -10,7 +10,7 @@ module.exports = `
     }
 
     input InvoiceInput {
-        businessID: ID
+        businessId: ID
         clientEmail: String
         totalBalance: Float
         status: String

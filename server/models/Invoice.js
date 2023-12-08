@@ -11,7 +11,6 @@ const invoiceSchema = new Schema({
   clientEmail: {
     type: String,
     required: true,
-    unique: true,
     match: [/.+@.+\..+/, 'Must match an email address!'],
   },
   totalBalance: {
