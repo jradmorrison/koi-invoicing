@@ -1,13 +1,15 @@
 // import state
 import { useState } from 'react';
 
+import { Navigate } from 'react-router-dom';
+
 // import mutation hook
 import { useMutation } from '@apollo/client';
 
 // import mutations
 import { LOGIN_BUSINESS } from '../../utils/mutations';
 
-;// import authentication 
+// import authentication
 import Auth from '../../utils/auth';
 
 // import stylesheet
@@ -18,8 +20,12 @@ const Login = () => {
   // state
   const [formState, setFormState] = useState({ email: '', password: '' });
 
-  // mutation 
+  // mutation
   const [loginBusiness, { error }] = useMutation(LOGIN_BUSINESS);
+
+  if (Auth.loggedIn()) {
+    return <Navigate to="/dashboard" />;
+  }
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -101,5 +107,5 @@ const Login = () => {
   );
 };
 
-// export login 
+// export login
 export default Login;

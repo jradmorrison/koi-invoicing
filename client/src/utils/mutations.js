@@ -55,7 +55,7 @@ export const CREATE_BUSINESS = gql`
         createBusiness(businessInput: $businessInput) {
             token
             business {
-                id
+                _id
                 name
             }
         }
@@ -68,7 +68,7 @@ export const LOGIN_BUSINESS = gql`
         loginBusiness(email: $email, password: $password) {
             token
             business {
-                id
+                _id
                 name
             }
         }

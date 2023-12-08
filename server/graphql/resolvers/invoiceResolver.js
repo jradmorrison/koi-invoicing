@@ -42,14 +42,15 @@ const invoiceResolver = {
   // queries
   Mutation: {
     // create invoice
-    createInvoice: async (_, { ID, invoiceInput: { businessID, clientEmail, totalBalance, taxes } }) => {
+    createInvoice: async (_, { ID, invoiceInput: { businessID, clientEmail, totalBalance, status, dateDue, serviceProvided } }) => {
       try {
         const newInvoice = {
           businessID,
           clientEmail,
           totalBalance,
-          taxes,
-          status: "PENDING",
+          status,
+          dateDue,
+          serviceProvided
         }
         const invoice = new Invoice(newInvoice);
         return await invoice.save();

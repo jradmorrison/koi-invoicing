@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 // import mutations 
-import { ADD_SKILL } from '../../utils/mutations';
+// import {  } from '../../utils/mutations';
 
 // import authentication
 import Auth from '../../utils/auth';

@@ -2,8 +2,8 @@
 import { useMutation } from '@apollo/client';
 
 // import queries and mutations
-import { REMOVE_SKILL } from '../../utils/mutations';
-import { QUERY_ME } from '../../utils/queries';
+// import {  } from '../../utils/mutations';
+// import { QUERY_ME } from '../../utils/queries';
 
 // skillslist component
 const SkillsList = ({ skills, isLoggedInUser = false }) => {

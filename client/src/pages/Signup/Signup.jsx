@@ -1,6 +1,8 @@
 // import state
 import { useState } from 'react';
 
+import { Navigate } from 'react-router-dom';
+
 // import mutation hook
 import { useMutation } from '@apollo/client';
 
@@ -21,6 +23,10 @@ const Signup = () => {
 
   // use mutation hook
   const [createBusiness, { error }] = useMutation(CREATE_BUSINESS);
+
+  if (Auth.loggedIn()) {
+    return <Navigate to="/dashboard" />;
+  };
 
   // update state based on form input changes
   const handleChange = (event) => {
