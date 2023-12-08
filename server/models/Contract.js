@@ -1,5 +1,7 @@
+// import mongoose
 const { model, Schema} = require('mongoose');
 
+// contract schema
 const contractSchema = new Schema({
   businessID: String,
   clientEmail: String,
@@ -14,4 +16,5 @@ const contractSchema = new Schema({
   allowPaymentPlan: Boolean,
 })
 
+// export contract schema
 module.exports = model('Contract', contractSchema);
