@@ -1,11 +1,14 @@
 // import model
 const Business = require('../../models/Business');
-
 // import mongoose
 const { Types: { ObjectId } } = require('mongoose');
 
 // import authentication
 const { signToken, AuthenticationError } = require('../../utils/auth');
+
+const bcrypt = require('bcrypt');
+const {genSalt} = require('bcrypt');
+
 
 // business resolver
 const businessResolver = {
@@ -32,15 +35,20 @@ const businessResolver = {
     // create business
     createBusiness: async (_, { businessInput: { name, email, password, companyLogo } }) => {
       try {
+        
+        const saltRounds = 10;
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashedPassword = await bcrypt.hash(password, salt);
         const newBusiness = {
           name,
           email,
-          password,
+          password : hashedPassword,
           companyLogo,
           userSince: new Date().toISOString(),
         }
         const business = await Business.create(newBusiness);
         const token = signToken(business);
+        
         return { token, business };
       } catch (err) {
         throw new Error(`Error creating business: ${err.message}`);
@@ -50,12 +58,16 @@ const businessResolver = {
     // update business
     updateBusiness: async (_, { ID, businessUpdate: { name, email, password, companyLogo } }) => {
       try {
+        const saltRounds = 10;
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        
         const updatedBusiness = await Business.findByIdAndUpdate(
           new ObjectId(ID),
           {
             name,
             email,
-            password,
+            password: hashedPassword,
             companyLogo,
           },
           { new: true }
@@ -93,7 +105,7 @@ const businessResolver = {
           throw AuthenticationError;
         }
 
-        const valid = business.password = password; //Todo : Add BCrypt
+        const valid = await bcrypt.compare(password, business.password);
 
         if (!valid) {
           throw AuthenticationError;
