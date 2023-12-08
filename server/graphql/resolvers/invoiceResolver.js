@@ -1,37 +1,48 @@
+// import model
 const Invoice = require('../../models/Invoice')
+
+// import mongoose
 const { Types: { ObjectId } } = require('mongoose');
 
-const invoiceResolver  = {
+// invoice resolver
+const invoiceResolver = {
+  // queries
   Query: {
-    getInvoiceByID: async (_, {ID}) => {
+    // read invoice by ID
+    getInvoiceByID: async (_, { ID }) => {
       try {
         const invoice = await Invoice.findById(new ObjectId(ID));
-        
-        if(!invoice) {
+
+        if (!invoice) {
           throw new Error('Contract not found');
         }
-        
+
         return invoice;
-      } catch(err) {
+      } catch (err) {
         throw new Error(`Error getting invoice: ${err.message}`);
       }
     },
-    getInvoiceByBusiness: async (_, {businessID}) => {
+
+    // read invcoice by business
+    getInvoiceByBusiness: async (_, { businessID }) => {
       try {
-        const invoices = await Invoice.find({businessID});
-        
-        if(!invoices || invoices.length === 0) {
+        const invoices = await Invoice.find({ businessID });
+
+        if (!invoices || invoices.length === 0) {
           throw new Error('business not found or invoices unavailable');
         }
-        
+
         return invoices;
       } catch (err) {
         throw new Error(`Error getting invoices by business: ${err.message}`);
       }
     },
   },
+
+  // queries
   Mutation: {
-    createInvoice: async (_, {ID, invoiceInput: {businessID, clientEmail, totalBalance, taxes}}) => {
+    // create invoice
+    createInvoice: async (_, { ID, invoiceInput: { businessID, clientEmail, totalBalance, taxes } }) => {
       try {
         const newInvoice = {
           businessID,
@@ -46,7 +57,9 @@ const invoiceResolver  = {
         throw new Error(`Error creating invoice: ${err.message}`);
       }
     },
-    updateInvoice: async (_, {ID, invoiceUpdate: { totalBalance, status} }) => {
+
+    // update invvoice
+    updateInvoice: async (_, { ID, invoiceUpdate: { totalBalance, status } }) => {
       try {
         const updatedInvoice = await Invoice.findByIdAndUpdate(
           new ObjectId(ID),
@@ -56,23 +69,25 @@ const invoiceResolver  = {
           },
           { new: true }
         );
-        
+
         if (!updatedInvoice) {
           throw new Error('Invoice not found');
         }
-        
+
         return updatedInvoice;
       } catch (err) {
         throw new Error(`Error updating invoice: ${err.message}`);
       }
     },
-    deleteInvoice: async (_, {ID}) => {
+
+    // delete invoice
+    deleteInvoice: async (_, { ID }) => {
       try {
-        const deletedInvoice= await Invoice.findByIdAndDelete(ID);
-        if(!deletedInvoice){
+        const deletedInvoice = await Invoice.findByIdAndDelete(ID);
+        if (!deletedInvoice) {
           throw new Error('Invoice not found');
         }
-        
+
         return deletedInvoice;
       } catch (err) {
         throw new Error(`Error deleting invoice: ${err.message}`);
@@ -81,4 +96,5 @@ const invoiceResolver  = {
   }
 }
 
+// export invoice resolver
 module.exports = invoiceResolver;

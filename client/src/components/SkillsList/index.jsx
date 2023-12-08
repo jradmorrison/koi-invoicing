@@ -1,17 +1,22 @@
+// import mutation hook
 import { useMutation } from '@apollo/client';
 
+// import queries and mutations
 import { REMOVE_SKILL } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
 
+// skillslist component
 const SkillsList = ({ skills, isLoggedInUser = false }) => {
+  // mutation
   const [removeSkill, { error }] = useMutation
-  (REMOVE_SKILL, {
-    refetchQueries: [
-      QUERY_ME,
-      'me'
-    ]
-  });
+    (REMOVE_SKILL, {
+      refetchQueries: [
+        QUERY_ME,
+        'me'
+      ]
+    });
 
+  // to remove a skill
   const handleRemoveSkill = async (skill) => {
     try {
       const { data } = await removeSkill({
@@ -26,6 +31,7 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
     return <h3>No Skills Yet</h3>;
   }
 
+  // return 
   return (
     <div>
       <div className="flex-row justify-space-between my-4">
@@ -55,4 +61,5 @@ const SkillsList = ({ skills, isLoggedInUser = false }) => {
   );
 };
 
+// export skillslist
 export default SkillsList;

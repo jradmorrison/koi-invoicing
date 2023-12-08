@@ -1,10 +1,13 @@
+// import link 
 import { Link } from 'react-router-dom';
 
+// profile list ocmponent
 const ProfileList = ({ profiles, title }) => {
   if (!profiles.length) {
     return <h3>No Profiles Yet</h3>;
   }
 
+  // return 
   return (
     <div>
       <h3 className="text-primary">{title}</h3>
@@ -36,4 +39,5 @@ const ProfileList = ({ profiles, title }) => {
   );
 };
 
+// export profilelist
 export default ProfileList;

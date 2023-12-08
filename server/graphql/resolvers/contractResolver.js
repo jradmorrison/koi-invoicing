@@ -1,51 +1,64 @@
+// import models
 const Contract = require('../../models/Contract')
 const Service = require('../../models/Service');
+
+// import mongoose
 const { Types: { ObjectId } } = require('mongoose');
 
-const contractResolver  = {
+// contract resolver
+const contractResolver = {
+  // queries
   Query: {
-    getContractByID: async (_, {ID}) => {
+    // read contract by ID
+    getContractByID: async (_, { ID }) => {
       try {
         const contract = await Contract.findById(new ObjectId(ID));
-        
-        if(!contract) {
+
+        if (!contract) {
           throw new Error('Contract not found');
         }
-        
+
         return contract;
-      } catch(err) {
+      } catch (err) {
         throw new Error(`Error getting contract: ${err.message}`);
       }
     },
-    getContractsByBusiness: async (_, {businessID}) => {
+
+    // read contracts by business
+    getContractsByBusiness: async (_, { businessID }) => {
       try {
-        const contracts = await Contract.find({businessID});
-        
-        if(!contracts || contracts.length === 0) {
+        const contracts = await Contract.find({ businessID });
+
+        if (!contracts || contracts.length === 0) {
           throw new Error('business not found or contracts unavailable');
         }
-        
+
         return contracts;
       } catch (err) {
         throw new Error(`Error getting contracts by business: ${err.message}`);
       }
     },
-    getContractsByClient: async (_, {clientID}) => {
+
+    // read contracts by client
+    getContractsByClient: async (_, { clientID }) => {
       try {
-        const contracts = await Contract.find({clientID});
-        
-        if(!contracts || contracts.length === 0) {
+        const contracts = await Contract.find({ clientID });
+
+        if (!contracts || contracts.length === 0) {
           throw new Error('client not found or contracts unavailable');
         }
-        
+
         return contracts;
       } catch (err) {
         throw new Error(`Error getting contracts by client: ${err.message}`);
       }
     }
   },
+
+  // mutations
   Mutation: {
-    createContract: async (_, {ID, contractInput: {businessID, clientEmail, totalBalance, taxes, availableServices, allowPaymentPlan}}) => {
+    // create contract
+    createContract: async (_, { ID, contractInput: { businessID, clientEmail, totalBalance, taxes, availableServices, allowPaymentPlan } }) => {
       try {
         const newContract = {
           businessID,
@@ -66,7 +79,9 @@ const contractResolver  = {
         throw new Error(`Error creating contract: ${err.message}`);
       }
     },
-    updateContract: async (_, {ID, contractUpdate: { clientEmail, clientID, paymentPlan, totalBalance, standingBalance, taxes, availableServices, services, status} }) => {
+
+    // update contract
+    updateContract: async (_, { ID, contractUpdate: { clientEmail, clientID, paymentPlan, totalBalance, standingBalance, taxes, availableServices, services, status } }) => {
       try {
         const updatedContract = await Contract.findByIdAndUpdate(
           new ObjectId(ID),
@@ -83,23 +98,25 @@ const contractResolver  = {
           },
           { new: true }
         );
-        
+
         if (!updatedContract) {
           throw new Error('Contract not found');
         }
-        
+
         return updatedContract;
       } catch (err) {
         throw new Error(`Error updating contract: ${err.message}`);
       }
     },
-    deleteContract: async (_, {ID}) => {
+
+    // delete contract
+    deleteContract: async (_, { ID }) => {
       try {
-        const deletedContract= await Contract.findByIdAndDelete(ID);
-        if(!deletedContract){
+        const deletedContract = await Contract.findByIdAndDelete(ID);
+        if (!deletedContract) {
           throw new Error('Contract not found');
         }
-        
+
         return deletedContract;
       } catch (err) {
         throw new Error(`Error deleting contract: ${err.message}`);
@@ -108,4 +125,5 @@ const contractResolver  = {
   }
 }
 
+// export contract resolver 
 module.exports = contractResolver;

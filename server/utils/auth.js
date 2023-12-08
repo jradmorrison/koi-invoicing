@@ -1,15 +1,20 @@
+// import graphQL and JWT 
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 
+// cvariables 
 const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
 
+// export authentication
 module.exports = {
   AuthenticationError: new GraphQLError('Could not authenticate user.', {
     extensions: {
       code: 'UNAUTHENTICATED',
     },
   }),
+
+  // authenication middlewear
   authMiddleware: function ({ req }) {
     // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
@@ -34,6 +39,8 @@ module.exports = {
     // return the request object so it can be passed to the resolver as `context`
     return req;
   },
+
+  // sign token 
   signToken: function ({ email, name, _id }) {
     const payload = { email, name, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });

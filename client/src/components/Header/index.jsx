@@ -1,12 +1,17 @@
+// import link
 import { Link } from 'react-router-dom';
 
+// import authentication
 import Auth from '../../utils/auth';
 
+// header component
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
+
+  // retunr 
   return (
     <header className="bg-info text-dark mb-4 py-3 display-flex align-center">
       <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
@@ -44,4 +49,5 @@ const Header = () => {
   );
 };
 
+// export header
 export default Header;

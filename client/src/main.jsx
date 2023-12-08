@@ -1,6 +1,8 @@
+// import DOM and router 
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+// import pages 
 import App from './App.jsx';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
@@ -8,6 +10,7 @@ import Signup from './pages/Signup/Signup.jsx';
 import Login from './pages/Login/Login.jsx';
 import ErrorPage from './pages/ErrorPage';
 
+// define router paths
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +34,5 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
-)
+// mount router
+ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router} />);

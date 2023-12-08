@@ -1,9 +1,11 @@
+// import type defs 
 const businessTypeDefs= require('./typedefs/businessTypeDefs');
 const serviceTypeDefs= require('./typedefs/serviceTypeDefs');
 const clientTypeDefs= require('./typedefs/clientTypeDefs');
 const contractTypeDefs= require('./typedefs/contractTypeDefs');
 const invoiceTypeDefs= require('./typedefs/invoiceTypeDefs');
 
+// export typedefs
 module.exports = `
     ${businessTypeDefs}
     ${serviceTypeDefs}

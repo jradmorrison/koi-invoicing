@@ -1,16 +1,27 @@
+// import state
 import { useState } from 'react';
+
+// import link 
 import { Link } from 'react-router-dom';
+
+// import mutation hook
 import { useMutation } from '@apollo/client';
 
+// import mutations 
 import { ADD_SKILL } from '../../utils/mutations';
 
+// import authentication
 import Auth from '../../utils/auth';
 
+// skillform component
 const SkillForm = ({ profileId }) => {
+  // state hook 
   const [skill, setSkill] = useState('');
 
+  // mutation hook
   const [addSkill, { error }] = useMutation(ADD_SKILL);
 
+  // handle form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -25,6 +36,7 @@ const SkillForm = ({ profileId }) => {
     }
   };
 
+  // return 
   return (
     <div>
       <h4>Endorse some more skills below.</h4>
@@ -64,4 +76,5 @@ const SkillForm = ({ profileId }) => {
   );
 };
 
+// export SkillForm
 export default SkillForm;
