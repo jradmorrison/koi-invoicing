@@ -11,6 +11,11 @@ module.exports = `
     ${contractTypeDefs}
     ${invoiceTypeDefs}
     
+    type Auth {
+    token: ID!
+    business: Business
+    }
+    
     type Query {
         getBusinessByID(ID : ID!): Business!
         
@@ -29,9 +34,11 @@ module.exports = `
     }
  
     type Mutation {
-        createBusiness(businessInput: BusinessInput!): Business!
+        createBusiness(businessInput: BusinessInput!): Auth
         updateBusiness(ID : ID!, businessUpdate: BusinessUpdate!): Business!
         deleteBusiness(ID : ID!): Business!
+        
+        loginBusiness(email: String!, password: String!): Auth
         
         createService(serviceInput: ServiceInput!): Service!
         updateService(ID : ID!, serviceUpdate: ServiceUpdate!): Service!

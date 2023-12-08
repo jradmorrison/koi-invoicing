@@ -43,3 +43,27 @@ export const REMOVE_SKILL = gql`
     }
   }
 `;
+
+export const CREATE_BUSINESS = gql`
+    mutation CreateBusiness($businessInput: BusinessInput!) {
+        createBusiness(businessInput: $businessInput) {
+            token
+            business {
+                id
+                name
+            }
+        }
+    }
+`;
+
+export const LOGIN_BUSINESS = gql`
+    mutation Mutation($email: String!, $password: String!) {
+        loginBusiness(email: $email, password: $password) {
+            token
+            business {
+                id
+                name
+            }
+        }
+    }
+`;

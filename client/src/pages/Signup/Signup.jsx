@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from '../../utils/mutations';
+import { CREATE_BUSINESS } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
@@ -12,7 +11,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
-  const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
+  const [createBusiness, { error }] = useMutation(CREATE_BUSINESS);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -27,18 +26,25 @@ const Signup = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-
+    // console.log(formState);
+    
     try {
-      const { data } = await addProfile({
-        variables: { ...formState },
+      console.log("Test");
+      const businessInput = {
+        "name": formState.businessName,
+        "email": formState.email,
+        "password": formState.password,
+        "companyLogo": "null"
+      }
+      const { data } = await createBusiness({
+        variables: {businessInput},
       });
-
-      Auth.login(data.addProfile.token);
+      
+      console.log(data);
+      Auth.login(data.createBusiness.token);
     } catch (e) {
       console.error(e);
     }
-    // document.location.replace('/');
   };
 
   return (
