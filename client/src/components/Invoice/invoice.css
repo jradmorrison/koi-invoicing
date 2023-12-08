@@ -9,8 +9,12 @@
     background-color: white;
     color: black !important;
     padding: 1rem;
-    width: 50rem;
-    height: 55rem;
+    width: 35rem;
+    height: 50rem;
+}
+
+.dark {
+    color: black;
 }
 
 .invoiceContent {
@@ -18,7 +22,7 @@
 }
 
 .totalCont {
-    padding-left: 28rem;
+    padding-left: 12rem;
     width: 20rem;
     padding-bottom: .7rem;
 }
@@ -31,20 +35,20 @@
     color: black;
     height: 2rem;
     font-size: 1rem;
-    padding-top: 7rem;
+    padding-top: 2rem !important;
 }
 
 .totalDue {
-    padding-left: 23rem;
+    padding-left: 15rem;
     padding-top: .7rem;
-    width: 25rem;
+    width: 17rem;
     font-size: 1.2rem;
     border-top: 1px solid black;
     box-sizing: content-box;
 }
 
-.totalWord {
-    padding-left: 3.5rem;
+.totalContWord {
+    padding-left: 4rem;
 }
 
 .header {
@@ -66,7 +70,7 @@
 
 .invoiceDetails {
     padding-top: 5rem;
-    padding-bottom: 12rem;
+    padding-bottom: 9rem;
 }
 
 .flex {
@@ -83,9 +87,11 @@
 .logo {
     aspect-ratio: 1;
     width: 2rem;
+    padding-right: 1rem;
 }
 
 .businessLogo {
     aspect-ratio: 1;
     width: 4rem;
+    padding-right: 1rem;
 }
