@@ -1,19 +1,26 @@
 {
-  "name": "apolloserver",
+  "name": "main-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "watch": "nodemon",
+    "seed": "node seeders/seed.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^3.13.0",
-    "graphql": "^16.8.1",
-    "mongoose": "^8.0.2",
-    "nodemon": "^3.0.2"
+    "@apollo/server": "^4.7.1",
+    "apollo-server-express": "^3.6.2",
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.2",
+    "graphql": "^16.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^7.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }

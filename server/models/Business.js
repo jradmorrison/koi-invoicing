@@ -1,5 +1,7 @@
+// import mongoose
 const { model, Schema} = require('mongoose');
 
+// business schmea
 const businessSchema = new Schema({
   name: String,
   email: String,
@@ -11,4 +13,5 @@ const businessSchema = new Schema({
   createdAt: String,
 })
 
+// export business schema
 module.exports = model('Business', businessSchema);

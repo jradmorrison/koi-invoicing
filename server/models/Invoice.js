@@ -10,5 +10,5 @@ const invoiceSchema = new Schema({
   status: String,
 });
 
-// export invoice
+// export invoice schema
 module.exports = model('Invoice', invoiceSchema);

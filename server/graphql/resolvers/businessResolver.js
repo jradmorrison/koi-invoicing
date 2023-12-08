@@ -1,24 +1,37 @@
+// import model
 const Business = require('../../models/Business');
+
+// import mongoose
 const { Types: { ObjectId } } = require('mongoose');
-const businessResolver  = {
+
+// import authentication
+const { signToken, AuthenticationError } = require('../../utils/auth');
+
+// business resolver
+const businessResolver = {
+  // queries
   Query: {
-    getBusinessByID: async (_, {ID}) => {
+    // read business by ID
+    getBusinessByID: async (_, { ID }) => {
       try {
         const business = await Business.findById(new ObjectId(ID));
-        
-        if(!business) {
+
+        if (!business) {
           throw new Error('Business not found');
         }
-        
+
         return business;
-      } catch(err) {
+      } catch (err) {
         throw new Error(`Error getting business: ${err.message}`);
       }
     },
-    
+
   },
+
+  // mutations
   Mutation: {
-    createBusiness: async (_, {businessInput: {name, email, password, companyLogo}}) => {
+    // create business
+    createBusiness: async (_, { businessInput: { name, email, password, companyLogo } }) => {
       try {
         const newBusiness = {
           name,
@@ -30,12 +43,15 @@ const businessResolver  = {
           clients: [],
           createdAt: new Date().toISOString(),
         }
-        const business = new Business(newBusiness);
-        return await business.save();
+        const business = await Business.create(newBusiness);
+        const token = signToken(business);
+        return { token, business };
       } catch (err) {
         throw new Error(`Error creating business: ${err.message}`);
       }
     },
+
+    // update business
     updateBusiness: async (_, { ID, businessUpdate: { name, email, password, companyLogo } }) => {
       try {
         const updatedBusiness = await Business.findByIdAndUpdate(
@@ -48,29 +64,53 @@ const businessResolver  = {
           },
           { new: true }
         );
-        
+
         if (!updatedBusiness) {
           throw new Error('Business not found');
         }
-        
+
         return updatedBusiness;
       } catch (err) {
         throw new Error(`Error updating business: ${err.message}`);
       }
     },
-    deleteBusiness: async (_, {ID}) => {
+
+    // delete business
+    deleteBusiness: async (_, { ID }) => {
       try {
         const deletedBusiness = await Business.findByIdAndDelete(new ObjectId(ID));
-        if(!deletedBusiness){
+        if (!deletedBusiness) {
           throw new Error('Business not found');
         }
-        
+
         return deletedBusiness;
       } catch (err) {
         throw new Error(`Error deleting business: ${err.message}`);
+      }
+    },
+
+    // login business
+    loginBusiness: async (_, { email, password }) => {
+      try {
+        const business = await Business.findOne({ email });
+        if (!business) {
+          throw AuthenticationError;
+        }
+
+        const valid = business.password = password; //Todo : Add BCrypt
+
+        if (!valid) {
+          throw AuthenticationError;
+        }
+
+        const token = signToken(business);
+        return { token, business };
+      } catch (err) {
+        throw new Error(`${err.message}`);
       }
     }
   }
 }
 
+// export business resolver 
 module.exports = businessResolver;

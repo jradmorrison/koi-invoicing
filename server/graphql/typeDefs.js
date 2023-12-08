@@ -1,16 +1,22 @@
-const {gql} = require('apollo-server');
-
+// import type defs 
 const businessTypeDefs= require('./typedefs/businessTypeDefs');
 const serviceTypeDefs= require('./typedefs/serviceTypeDefs');
 const clientTypeDefs= require('./typedefs/clientTypeDefs');
 const contractTypeDefs= require('./typedefs/contractTypeDefs');
 const invoiceTypeDefs= require('./typedefs/invoiceTypeDefs');
-module.exports = gql`
+
+// export typedefs
+module.exports = `
     ${businessTypeDefs}
     ${serviceTypeDefs}
     ${clientTypeDefs}
     ${contractTypeDefs}
     ${invoiceTypeDefs}
+    
+    type Auth {
+    token: ID!
+    business: Business
+    }
     
     type Query {
         getBusinessByID(ID : ID!): Business!
@@ -30,9 +36,11 @@ module.exports = gql`
     }
  
     type Mutation {
-        createBusiness(businessInput: BusinessInput!): Business!
+        createBusiness(businessInput: BusinessInput!): Auth
         updateBusiness(ID : ID!, businessUpdate: BusinessUpdate!): Business!
         deleteBusiness(ID : ID!): Business!
+        
+        loginBusiness(email: String!, password: String!): Auth
         
         createService(serviceInput: ServiceInput!): Service!
         updateService(ID : ID!, serviceUpdate: ServiceUpdate!): Service!

@@ -1,5 +1,7 @@
+// import mongoose
 const { model, Schema} = require('mongoose');
 
+// client schema
 const clientSchema = new Schema({
   businessID: String,
   name: String,
@@ -9,4 +11,5 @@ const clientSchema = new Schema({
   contracts: [{ type: Schema.Types.ObjectId, ref: 'Contract' }],
 })
 
+// export client schema
 module.exports = model('Client', clientSchema);
