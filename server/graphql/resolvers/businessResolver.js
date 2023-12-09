@@ -18,9 +18,9 @@ const businessResolver = {
     currentBusiness: async (_, _args, { user }) => {
       try {
         if (user) {
-          return await Business.findOne({ _id: user._id }).select(
-            '-__v -password'
-          );
+          return await Business.findOne({ _id: user._id })
+            .select('-__v -password')
+            .populate('invoices');
         }
       } catch (err) {
         throw new Error(err);

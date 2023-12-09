@@ -1,10 +1,12 @@
 // import model
-const Invoice = require('../../models/Invoice')
-const Business = require('../../models/Business')
-const mail = require('../../utils/nodemailer')
+const Invoice = require('../../models/Invoice');
+const Business = require('../../models/Business');
+const mail = require('../../utils/nodemailer');
 
 // import mongoose
-const { Types: { ObjectId } } = require('mongoose');
+const {
+  Types: { ObjectId },
+} = require('mongoose');
 
 // invoice resolver
 const invoiceResolver = {
@@ -44,38 +46,54 @@ const invoiceResolver = {
   // queries
   Mutation: {
     // create invoice
-    createInvoice: async (_, {invoiceInput: { businessId, clientEmail, totalBalance, dateDue, serviceProvided } }) => {
+    createInvoice: async (
+      _,
+      {
+        invoiceInput: {
+          businessId,
+          clientEmail,
+          totalBalance,
+          dateDue,
+          serviceProvided,
+        },
+      }
+    ) => {
       try {
         const now = new Date().toISOString();
-        const business = await Business.findById(new ObjectId(businessId))
+        // const business = await Business.findById(new ObjectId(businessId))
         const newInvoice = {
           businessId,
           clientEmail,
           totalBalance,
           dateDue,
-          serviceProvided
-        }
-        const invoice = new Invoice(newInvoice);
-        
+          serviceProvided,
+        };
+        const invoice = await Invoice.create(newInvoice);
+        const business = await Business.findOneAndUpdate(
+          { _id: businessId },
+          { $push: { invoices: invoice._id } },
+          { new: true }
+        );
+
         //TODO Generate Stripe Invoice
         //TODO Send Email to Client done
         //TODO Edit EmailPackage
         const EmailPackage = {
           from: business.name,
           fromEmail: business.email,
-          to: "Client Name",
+          to: 'Client Name',
           toEmail: clientEmail,
           invoice: `Invoice #${invoice._id}`,
           invoiceDate: now,
           paymentDueDate: dateDue.toString(),
           totalAmount: totalBalance.toString(),
-          taxes: "0.00",
+          taxes: '0.00',
           totalDue: totalBalance.toString(),
           desc: serviceProvided,
-        }
-        
+        };
+
         mail(EmailPackage);
-        
+
         return await invoice.save();
       } catch (err) {
         throw new Error(`Error creating invoice: ${err.message}`);
@@ -83,7 +101,10 @@ const invoiceResolver = {
     },
 
     // update invvoice
-    updateInvoice: async (_, { ID, invoiceUpdate: { totalBalance, status } }) => {
+    updateInvoice: async (
+      _,
+      { ID, invoiceUpdate: { totalBalance, status } }
+    ) => {
       try {
         const updatedInvoice = await Invoice.findByIdAndUpdate(
           new ObjectId(ID),
@@ -116,9 +137,9 @@ const invoiceResolver = {
       } catch (err) {
         throw new Error(`Error deleting invoice: ${err.message}`);
       }
-    }
-  }
-}
+    },
+  },
+};
 
 // export invoice resolver
 module.exports = invoiceResolver;

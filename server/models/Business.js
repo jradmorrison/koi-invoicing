@@ -32,5 +32,7 @@ const businessSchema = new Schema({
   invoices: [{ type: Schema.Types.ObjectId, ref: 'Invoice' }]
 });
 
+const Business = model('Business', businessSchema);
+
 // export business schema
-module.exports = model('Business', businessSchema);
+module.exports = Business

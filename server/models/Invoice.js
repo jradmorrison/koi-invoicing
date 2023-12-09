@@ -34,5 +34,7 @@ const invoiceSchema = new Schema({
   },
 });
 
+const Invoice = model('Invoice', invoiceSchema);
+
 // export invoice schema
-module.exports = model('Invoice', invoiceSchema);
+module.exports = Invoice;
