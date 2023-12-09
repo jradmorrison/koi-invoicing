@@ -10,32 +10,14 @@ import Header from '../../components/Header';
 import InvoiceCard from '../../components/InvoiceCard';
 import CreateInvoice from '../../components/CreateInvoice';
 
-import { QUERY_INVOICES_BY_BUSINESS } from '../../utils/queries';
-import {GET_ONE_BUSINESS} from '../../utils/queries';
+import { GET_CURRENT_BUSINESS } from '../../utils/queries';
 
 const Dashboard = () => {
   const [visibility, toggleVisibility] = useState(false);
-  const business = getBusiness();
-  const invoices = getInvoices();
+  const { loading, data } = useQuery(GET_CURRENT_BUSINESS);
+  const business = data?.currentBusiness || {};
 
-  // TODO: Query current logged in user to get Business info
-  // TODO: Pass in businessId as varibale to query invoices by business
-
-  const getBusiness = () => {
-    const {loading, data} = useQuery(GET_ONE_BUSINESS, {
-      variables: {}
-    })
-    const business = data?.getBusinessByID || [];
-    return business
-  }
-  
-  const getInvoices = () => {
-    const { loading, data } = useQuery(QUERY_INVOICES_BY_BUSINESS, {
-      variables: {businessId},
-    });
-    const invoices = data?.getInvoiceByBusiness || [];
-    return invoices;
-  };
+  console.log(business);
 
   if (!Auth.loggedIn()) {
     return <Navigate to="/login" />;
@@ -44,7 +26,11 @@ const Dashboard = () => {
   return (
     <main className="min-vh-100 min-vw-100 bg-light">
       {/* TODO: Pass in business info as props to header component to personalize businesses dashboard */}
-      <Header />
+      <Header
+        businessName={business.name}
+        businessId={business._id}
+        logo={business.companyLogo}
+      />
       <div className="container mt-5">
         <div className="d-flex justify-content-end mb-5">
           <Button

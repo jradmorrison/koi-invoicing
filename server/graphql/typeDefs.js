@@ -19,6 +19,7 @@ module.exports = `
     }
     
     type Query {
+        currentBusiness: Business
         getBusinessByID(ID : ID!): Business!
         
         getServiceByID(ID : ID!): Service!
