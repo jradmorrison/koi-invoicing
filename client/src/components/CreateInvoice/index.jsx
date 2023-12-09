@@ -10,7 +10,7 @@ import { useMutation } from '@apollo/client';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-import {CREATE_INVOICE} from '../../utils/mutations';
+import { CREATE_INVOICE } from '../../utils/mutations';
 
 //DATE PICKER
 {
@@ -21,11 +21,11 @@ import {CREATE_INVOICE} from '../../utils/mutations';
 </LocalizationProvider> */
 }
 //* We need to pass in the businesses _id and set it in form state so it can be used when we create the invoice
-const CreateInvoice = ({ visibility, toggleVisibility }) => {
+const CreateInvoice = ({ visibility, toggleVisibility, businessId }) => {
   let date;
   const [formState, setFormState] = useState({
-  //*  businessId: props.businessId,
-    clientName: '',
+    businessId: businessId,
+    // clientName: '',
     clientEmail: '',
     totalBalance: null,
     dateDue: '',
@@ -52,17 +52,24 @@ const CreateInvoice = ({ visibility, toggleVisibility }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(formState);
+
+    const invoiceInput = {
+      businessId: formState.businessId,
+      clientEmail: formState.clientEmail,
+      totalBalance: parseFloat(formState.totalBalance),
+      dateDue: formState.dateDue,
+      serviceProvided: formState.serviceProvided,
+    };
+    console.log(invoiceInput);
     try {
-      const {data} = await createInvoice({
-        variables: { ...formState },
+      const { data } = await createInvoice({
+        variables: { invoiceInput },
       });
       console.log(data);
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-
-  }
+  };
 
   // return
   return (
@@ -129,7 +136,9 @@ const CreateInvoice = ({ visibility, toggleVisibility }) => {
           </div>
         </div>
         <div className="d-flex justify-content-around">
-          <Button variant="outlined" onClick={handleFormSubmit}>Create Invoice</Button>
+          <Button variant="outlined" onClick={handleFormSubmit}>
+            Create Invoice
+          </Button>
         </div>
       </div>
     </div>

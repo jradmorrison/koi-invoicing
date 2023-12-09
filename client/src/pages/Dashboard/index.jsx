@@ -17,7 +17,8 @@ const Dashboard = () => {
   const { loading, data } = useQuery(GET_CURRENT_BUSINESS);
   const business = data?.currentBusiness || {};
 
-  console.log(business);
+  const {invoices} = business;
+  console.log(invoices);
 
   if (!Auth.loggedIn()) {
     return <Navigate to="/login" />;
@@ -54,6 +55,7 @@ const Dashboard = () => {
             <CreateInvoice
               visibility={visibility}
               toggleVisibility={toggleVisibility}
+              businessId = {business._id}
             />
           </div>
         </>
