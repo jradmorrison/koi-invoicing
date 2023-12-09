@@ -19,6 +19,7 @@ module.exports = `
     }
     
     type Query {
+        currentBusiness: Business
         getBusinessByID(ID : ID!): Business!
         
         getServiceByID(ID : ID!): Service!
@@ -31,7 +32,7 @@ module.exports = `
         getContractsByBusiness(businessId : ID!): [Contract]
         getContractsByClient(clientId : ID!): [Contract]
         
-        getInvoiceByID(ID : ID!): Invoice!
+        getInvoiceByID(ID: ID!): Invoice
         getInvoiceByBusiness(businessId: ID!): [Invoice]
     }
  

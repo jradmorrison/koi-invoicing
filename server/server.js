@@ -4,9 +4,8 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 
-
-const typeDefs = require("./graphql/typeDefs.js")
-const resolvers = require("./graphql/resolvers.js")
+const typeDefs = require('./graphql/typeDefs.js');
+const resolvers = require('./graphql/resolvers.js');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -14,8 +13,8 @@ const db = require('./config/connection');
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
-})
+  resolvers,
+});
 
 const startApolloServer = async () => {
   await server.start();
@@ -23,9 +22,12 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
-  app.use('/graphql', expressMiddleware(server, {
-    context: authMiddleware
-  }));
+  app.use(
+    '/graphql',
+    expressMiddleware(server, {
+      context: authMiddleware,
+    })
+  );
 
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -44,4 +46,3 @@ const startApolloServer = async () => {
 };
 
 startApolloServer();
-

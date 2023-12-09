@@ -1,6 +1,26 @@
 // import apollo client
 import { gql } from '@apollo/client';
 
+export const GET_CURRENT_BUSINESS = gql`
+query Query {
+  currentBusiness {
+    _id
+    companyLogo
+    email
+    name
+    userSince
+    invoices {
+      _id
+      clientEmail
+      dateDue
+      serviceProvided
+      status
+      totalBalance
+    }
+  }
+}
+`
+
 export const GET_ONE_BUSINESS = gql`
 query Query($id: ID!) {
   getBusinessByID(ID: $id) {
@@ -30,6 +50,7 @@ query Query($id: ID!) {
     serviceProvided
     status
     totalBalance
+    businessId
   }
 }
 `;

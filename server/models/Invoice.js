@@ -25,14 +25,19 @@ const invoiceSchema = new Schema({
   dateDue: {
     type: Date,
     required: true,
-    default: Date.now,
   },
   serviceProvided: {
     type: String,
     required: true,
     default: "",
   },
+  createdOn: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
+const Invoice = model('Invoice', invoiceSchema);
+
 // export invoice schema
-module.exports = model('Invoice', invoiceSchema);
+module.exports = Invoice;

@@ -1,23 +1,38 @@
 // import model
 const Business = require('../../models/Business');
 // import mongoose
-const { Types: { ObjectId } } = require('mongoose');
+const {
+  Types: { ObjectId },
+} = require('mongoose');
 
 // import authentication
 const { signToken, AuthenticationError } = require('../../utils/auth');
 
 const bcrypt = require('bcrypt');
-const {genSalt} = require('bcrypt');
-
+const { genSalt } = require('bcrypt');
 
 // business resolver
 const businessResolver = {
   // queries
   Query: {
+    currentBusiness: async (_, _args, { user }) => {
+      try {
+        if (user) {
+          return await Business.findOne({ _id: user._id })
+            .select('-__v -password')
+            .populate('invoices');
+        }
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+
     // read business by ID
     getBusinessByID: async (_, { ID }) => {
       try {
-        const business = await Business.findById(new ObjectId(ID)).populate('invoices');
+        const business = await Business.findById(new ObjectId(ID)).populate(
+          'invoices'
+        );
 
         if (!business) {
           throw new Error('Business not found');
@@ -33,22 +48,24 @@ const businessResolver = {
   // mutations
   Mutation: {
     // create business
-    createBusiness: async (_, { businessInput: { name, email, password, companyLogo } }) => {
+    createBusiness: async (
+      _,
+      { businessInput: { name, email, password, companyLogo } }
+    ) => {
       try {
-        
         const saltRounds = 10;
         const salt = await bcrypt.genSalt(saltRounds);
         const hashedPassword = await bcrypt.hash(password, salt);
         const newBusiness = {
           name,
           email,
-          password : hashedPassword,
+          password: hashedPassword,
           companyLogo,
           userSince: new Date().toISOString(),
-        }
+        };
         const business = await Business.create(newBusiness);
         const token = signToken(business);
-        
+
         return { token, business };
       } catch (err) {
         throw new Error(`Error creating business: ${err.message}`);
@@ -56,12 +73,15 @@ const businessResolver = {
     },
 
     // update business
-    updateBusiness: async (_, { ID, businessUpdate: { name, email, password, companyLogo } }) => {
+    updateBusiness: async (
+      _,
+      { ID, businessUpdate: { name, email, password, companyLogo } }
+    ) => {
       try {
         const saltRounds = 10;
         const salt = await bcrypt.genSalt(saltRounds);
         const hashedPassword = await bcrypt.hash(password, salt);
-        
+
         const updatedBusiness = await Business.findByIdAndUpdate(
           new ObjectId(ID),
           {
@@ -86,7 +106,9 @@ const businessResolver = {
     // delete business
     deleteBusiness: async (_, { ID }) => {
       try {
-        const deletedBusiness = await Business.findByIdAndDelete(new ObjectId(ID));
+        const deletedBusiness = await Business.findByIdAndDelete(
+          new ObjectId(ID)
+        );
         if (!deletedBusiness) {
           throw new Error('Business not found');
         }
@@ -116,9 +138,9 @@ const businessResolver = {
       } catch (err) {
         throw new Error(`${err.message}`);
       }
-    }
-  }
-}
+    },
+  },
+};
 
-// export business resolver 
+// export business resolver
 module.exports = businessResolver;
