@@ -1,4 +1,14 @@
 const InvoiceCard = ({ invoice }) => {
+  const now = new Date();
+  
+  if (invoice.dateDue < now && invoice.status !== 'COMPLETE') {
+    invoice.status = 'PAST DUE';
+  } else if (invoice.dateDue > now && invoice.status !== 'COMPLETE') {
+    invoice.status = 'PENDING';
+  }
+
+  // const dateDue = new Date(invoice.dateDue);
+
   let status;
   if (invoice.status == 'PENDING') {
     status = {
@@ -8,7 +18,7 @@ const InvoiceCard = ({ invoice }) => {
     status = {
       color: 'green',
     };
-  } else if (invoice.status == 'PAST-DUE') {
+  } else if (invoice.status == 'PAST DUE') {
     status = {
       color: 'red',
     };

@@ -25,7 +25,6 @@ const invoiceSchema = new Schema({
   dateDue: {
     type: Date,
     required: true,
-    default: Date.now,
   },
   serviceProvided: {
     type: String,

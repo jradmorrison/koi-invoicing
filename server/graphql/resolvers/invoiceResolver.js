@@ -58,16 +58,15 @@ const invoiceResolver = {
         },
       }
     ) => {
-      try {
-        const now = new Date().toISOString();
-        // const business = await Business.findById(new ObjectId(businessId))
-        const newInvoice = {
-          businessId,
-          clientEmail,
-          totalBalance,
-          dateDue,
-          serviceProvided,
-        };
+      const now = new Date().toISOString();
+      const newInvoice = {
+        businessId,
+        clientEmail,
+        totalBalance,
+        dateDue,
+        serviceProvided,
+      };
+      try {       
         const invoice = await Invoice.create(newInvoice);
         const business = await Business.findOneAndUpdate(
           { _id: businessId },

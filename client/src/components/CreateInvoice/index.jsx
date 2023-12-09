@@ -31,7 +31,7 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId }) => {
     dateDue: '',
     serviceProvided: '',
   });
-
+  
   const [createInvoice, { error }] = useMutation(CREATE_INVOICE);
 
   const handleChange = (event) => {
