@@ -31,6 +31,10 @@ const invoiceSchema = new Schema({
     required: true,
     default: "",
   },
+  createdOn: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 const Invoice = model('Invoice', invoiceSchema);

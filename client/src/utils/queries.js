@@ -50,6 +50,7 @@ query Query($id: ID!) {
     serviceProvided
     status
     totalBalance
+    businessId
   }
 }
 `;

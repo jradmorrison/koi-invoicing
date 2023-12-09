@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <Dashbaord />
       }, {
-        path: '/invoice',
+        path: '/invoice/:invoiceId',
         element: <Invoice />
       }
     ]
