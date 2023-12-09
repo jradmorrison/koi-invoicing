@@ -1,11 +1,7 @@
 #createInvoiceForm {
-    /* width: 60%; */
-    /* position: absolute;
-    top: 50%;
-    left: 50%; */
-    top: 10%;
     background-color: whitesmoke;
     z-index: 1000;
+    box-shadow: inset 0px 0px 10px;
 }
 
 .overlay {

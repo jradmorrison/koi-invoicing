@@ -44,7 +44,7 @@ const invoiceResolver = {
   // queries
   Mutation: {
     // create invoice
-    createInvoice: async (_, {invoiceInput: { businessId, clientEmail, totalBalance, status, dateDue, serviceProvided } }) => {
+    createInvoice: async (_, {invoiceInput: { businessId, clientEmail, totalBalance, dateDue, serviceProvided } }) => {
       try {
         const now = new Date().toISOString();
         const business = await Business.findById(new ObjectId(businessId))
@@ -52,7 +52,6 @@ const invoiceResolver = {
           businessId,
           clientEmail,
           totalBalance,
-          status,
           dateDue,
           serviceProvided
         }
