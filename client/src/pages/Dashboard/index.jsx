@@ -17,7 +17,7 @@ const Dashboard = () => {
   const { loading, data } = useQuery(GET_CURRENT_BUSINESS);
   const business = data?.currentBusiness || {};
 
-  const {invoices} = business;
+  const { invoices } = business;
   console.log(invoices);
 
   if (!Auth.loggedIn()) {
@@ -26,41 +26,54 @@ const Dashboard = () => {
 
   return (
     <main className="min-vh-100 min-vw-100 bg-light">
-      {/* TODO: Pass in business info as props to header component to personalize businesses dashboard */}
-      <Header
-        businessName={business.name}
-        businessId={business._id}
-        logo={business.companyLogo}
-      />
-      <div className="container mt-5">
-        <div className="d-flex justify-content-end mb-5">
-          <Button
-            variant="outlined"
-            onClick={() => {
-              toggleVisibility(!visibility);
-            }}>
-            Create Invoice
-          </Button>
-        </div>
-        <div>
-          <InvoiceCard />
-        </div>
-      </div>
-      {visibility ? (
-        <>
-          <div className="overlay"></div>
-          <div
-            id="createInvoiceForm"
-            className="rounded-4 px-3 py-3 col-xl-6 col-sm-8 col-12 position-absolute top-50 start-50 translate-middle">
-            <CreateInvoice
-              visibility={visibility}
-              toggleVisibility={toggleVisibility}
-              businessId = {business._id}
-            />
-          </div>
-        </>
+      {loading ? (
+        <div>loading...</div>
       ) : (
-        <div></div>
+        <>
+          <Header
+            businessName={business.name}
+            businessId={business._id}
+            logo={business.companyLogo}
+          />
+          <div className="container mt-5">
+            <div className="d-flex justify-content-end mb-5">
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  toggleVisibility(!visibility);
+                }}>
+                Create Invoice
+              </Button>
+            </div>
+            <div className="d-flex flex-wrap">
+              {invoices.length ? (
+                <>
+                  {invoices.map((invoice) => (
+                    <InvoiceCard key={invoice._id} invoice={invoice} />
+                  ))}
+                </>
+              ) : (
+                <div className="text-center">No invoices yet!</div>
+              )}
+            </div>
+          </div>
+          {visibility ? (
+            <>
+              <div className="overlay"></div>
+              <div
+                id="createInvoiceForm"
+                className="rounded-4 px-3 py-3 col-xl-6 col-sm-8 col-12 position-absolute top-50 start-50 translate-middle">
+                <CreateInvoice
+                  visibility={visibility}
+                  toggleVisibility={toggleVisibility}
+                  businessId={business._id}
+                />
+              </div>
+            </>
+          ) : (
+            <div></div>
+          )}
+        </>
       )}
     </main>
   );
