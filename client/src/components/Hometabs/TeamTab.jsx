@@ -14,28 +14,28 @@ export default function TeamTab() {
     <h5 className="card-title">Brandon Barnes</h5>
     <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
     <p className="card-text">Short bio</p>
-    <a href="#" className="card-link">GitHub</a>
+    <a href="https://github.com/ThatZiro" className="card-link">GitHub</a>
     <a href="#" className="card-link">LinkedIn</a>
   </div>
   <div className="card-body">
     <h5 className="card-title">Jared Morrison</h5>
     <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
     <p className="card-text">Short bio</p>
-    <a href="#" className="card-link">GitHub</a>
+    <a href="https://github.com/jradmorrison" className="card-link">GitHub</a>
     <a href="#" className="card-link">LinkedIn</a>
   </div>
   <div className="card-body">
     <h5 className="card-title">Trae Roy</h5>
     <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
     <p className="card-text">short bio</p>
-    <a href="#" className="card-link">GitHub</a>
+    <a href="https://github.com/Roesnware" className="card-link">GitHub</a>
     <a href="#" className="card-link">LinkedIn</a>
   </div>
   <div className="card-body">
     <h5 className="card-title">Kathryn Dougherty</h5>
     <h6 className="card-subtitle mb-2 text-body-secondary">CSS Design</h6>
     <p className="card-text">Short bio</p>
-    <a href="#" className="card-link">GitHub</a>
+    <a href="https://github.com/kathrynfisher3700" className="card-link">GitHub</a>
     <a href="#" className="card-link">LinkedIn</a>
   </div>
 </div>
