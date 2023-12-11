@@ -46,7 +46,7 @@ const Dashboard = () => {
                 Create Invoice
               </Button>
             </div>
-            <div className="d-flex flex-wrap">
+            <div className="d-flex flex-wrap justify-content-center">
               {invoices.length ? (
                 <>
                   {invoices.map((invoice) => (
