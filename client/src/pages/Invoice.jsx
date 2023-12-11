@@ -27,7 +27,8 @@ const demoInvoice = {
   totalBalance: '100',
   status: 'Overdue',
   dateDue: '12/04/2023',
-  serviceProvided: 'Website Development',
+  serviceProvided: 'Created landing page for site',
+  serviceTitle: 'Website Development',
   createdOn: '11/26/2023',
 };
 
@@ -62,8 +63,9 @@ const Invoice = () => {
   }
 
   const handleUpdateInvoice = async () => {
+    console.log("update me!");
     setVisibility(true);
-    document.body.style.overflow = 'hidden';
+    //document.body.style.overflow = 'hidden';
   }
 
   const handleDeleteInvoice = async (invoiceID) => {
@@ -104,7 +106,11 @@ const Invoice = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
+              backgroundColor: "#010144",
               paddingTop: '16rem',
+              paddingLeft: "1rem",
+              paddingRight: "1rem",
+              borderRadius: "2rem"
             }}>
             <div
               style={{
@@ -113,7 +119,7 @@ const Invoice = () => {
                 color: '#D9D9D9',
               }}>
               <h1 style={{ fontSize: '2.2rem', padding: '0' }}>
-                Invoice - {invoice.businessId}
+                Invoice - {invoice.serviceTitle}
               </h1>
               <p style={{ fontSize: '1.5rem', padding: '0', margin: '0' }}>
                 Date Billed: {invoice.createdOn}
@@ -134,7 +140,7 @@ const Invoice = () => {
                 minHeight: '4rem',
                 marginBottom: '3rem',
               }}>
-              <p>Due By{invoice.dateDue}</p>
+              <p>Due By: {invoice.dateDue}</p>
               <h4>${invoice.totalBalance}</h4>
             </div>
             <button
@@ -160,16 +166,23 @@ const Invoice = () => {
                 }}>
                 Make Payment
               </button>
-            </div>) : (<div>
+            </div>) : (<div style={{ display: "flex", gap: "1rem", alignItems: "center", justifyContent: "center" }}>
               {visibility && (
-                <EditInvoice visibility={visibility} toggleVisibility={setVisibility} invoice={invoice} />)}
+                <>
+                  <div className="overlay"></div>
+                  <div
+                    id="createInvoiceForm"
+                    className="rounded-4 px-3 py-3 col-xl-6 col-sm-8 col-12 position-absolute top-50 start-50 translate-middle">
+                    <EditInvoice visibility={visibility} toggleVisibility={setVisibility} invoice={invoice} />
+                  </div>
+                </>
+              )}
               <button
-                onClick={() => handleUpdateInvoice}
+                onClick={() => { handleUpdateInvoice() }}
                 style={{
                   padding: '.5rem',
                   borderRadius: '1rem',
                   backgroundColor: '#FDC447',
-                  marginBottom: '1rem',
                   textAlign: 'center',
                   color: '#010144',
                 }}>

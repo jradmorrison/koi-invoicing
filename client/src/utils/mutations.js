@@ -56,8 +56,8 @@ export const CREATE_INVOICE = gql`
 `;
 
 export const UPDATE_INVOICE = gql`
-mutation Mutation($invoiceUpdate: InvoiceUpdate) {
-  updateInvoice(invoiceUpdate: $invoiceUpdate) {
+mutation Mutation($id: ID!, $invoiceUpdate: InvoiceUpdate) {
+  updateInvoice(ID: $id, invoiceUpdate: $invoiceUpdate) {
     _id
     clientEmail
     serviceProvided

@@ -28,7 +28,7 @@ module.exports = `
         loginBusiness(email: String!, password: String!): Auth
         
         createInvoice(invoiceInput: InvoiceInput): Invoice!
-        updateInvoice(invoiceUpdate: InvoiceUpdate): Invoice!
+        updateInvoice(ID: ID!, invoiceUpdate: InvoiceUpdate): Invoice!
         deleteInvoice(ID : ID!): Invoice!
     }
 `
