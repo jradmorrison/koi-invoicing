@@ -3,11 +3,16 @@ import Auth from '../utils/auth';
 import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
 
+import { useMutation } from '@apollo/client';
+import { DELETE_INVOICE } from '../utils/mutations';
+
+import EditInvoice from '../components/EditInvoice';
+
 // import packages
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 // import packages for pdf export
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { useQuery } from '@apollo/client';
 import { GET_ONE_INVOICE } from '../utils/queries';
@@ -34,12 +39,9 @@ const Invoice = () => {
   });
   const invoice = data?.getInvoiceByID || [];
 
-  console.log(invoice);
+  const [deleteInvoice, { err }] = useMutation(DELETE_INVOICE);
 
-  // make sure business logged in
-  if (!Auth.loggedIn()) {
-    return <Navigate to="/login" />;
-  }
+  console.log(invoice);
 
   // for exporting to pdf
   const pdfExportComponent = useRef(null);
@@ -51,6 +53,29 @@ const Invoice = () => {
   const handleMakePayment = (event) => {
     event.preventDefault();
   };
+
+  const [visibility, setVisibility] = useState(false);
+
+  const closeModal = () => {
+    setVisibility(false);
+    document.body.style.overflow = "auto";
+  }
+
+  const handleUpdateInvoice = async () => {
+    setVisibility(true);
+    document.body.style.overflow = 'hidden';
+  }
+
+  const handleDeleteInvoice =  async (invoiceID) => {
+    try {
+      const { data } = await deleteInvoice({
+        variables: { invoiceID }
+      });
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   // return
   return (
@@ -124,16 +149,43 @@ const Invoice = () => {
               }}>
               Export to PDF
             </button>
-            <button
-              onClick={handleMakePayment}
-              style={{
-                padding: '.5rem',
-                borderRadius: '1rem',
-                backgroundColor: '#FDC447',
-                color: '#010144',
-              }}>
-              Make Payment
-            </button>
+            {!Auth.loggedIn ? <div>
+              <button
+                onClick={handleMakePayment}
+                style={{
+                  padding: '.5rem',
+                  borderRadius: '1rem',
+                  backgroundColor: '#FDC447',
+                  color: '#010144',
+                }}>
+                Make Payment
+              </button>
+            </div> : <div>
+              { visibility && (
+              <EditInvoice visibility={visibility} toggleVisibility={setVisibility} invoice={invoice} /> )}
+              <button
+                onClick={() => handleUpdateInvoice}
+                style={{
+                  padding: '.5rem',
+                  borderRadius: '1rem',
+                  backgroundColor: '#FDC447',
+                  marginBottom: '1rem',
+                  textAlign: 'center',
+                  color: '#010144',
+                }}>
+                Edit Invoice
+              </button>
+              <button
+                onClick={() => {handleDeleteInvoice(invoice._id)}}
+                style={{
+                  padding: '.5rem',
+                  borderRadius: '1rem',
+                  backgroundColor: '#FDC447',
+                  color: '#010144',
+                }}>
+                Delete Invoice
+              </button>
+            </div>}
           </div>
         </div>
       )}
