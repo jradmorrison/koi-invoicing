@@ -66,7 +66,7 @@ const Invoice = () => {
     document.body.style.overflow = 'hidden';
   }
 
-  const handleDeleteInvoice =  async (invoiceID) => {
+  const handleDeleteInvoice = async (invoiceID) => {
     try {
       const { data } = await deleteInvoice({
         variables: { invoiceID }
@@ -149,7 +149,7 @@ const Invoice = () => {
               }}>
               Export to PDF
             </button>
-            {!Auth.loggedIn ? <div>
+            {!Auth.loggedIn ? (<div>
               <button
                 onClick={handleMakePayment}
                 style={{
@@ -160,9 +160,9 @@ const Invoice = () => {
                 }}>
                 Make Payment
               </button>
-            </div> : <div>
-              { visibility && (
-              <EditInvoice visibility={visibility} toggleVisibility={setVisibility} invoice={invoice} /> )}
+            </div>) : (<div>
+              {visibility && (
+                <EditInvoice visibility={visibility} toggleVisibility={setVisibility} invoice={invoice} />)}
               <button
                 onClick={() => handleUpdateInvoice}
                 style={{
@@ -176,7 +176,7 @@ const Invoice = () => {
                 Edit Invoice
               </button>
               <button
-                onClick={() => {handleDeleteInvoice(invoice._id)}}
+                onClick={() => { handleDeleteInvoice(invoice._id) }}
                 style={{
                   padding: '.5rem',
                   borderRadius: '1rem',
@@ -185,7 +185,7 @@ const Invoice = () => {
                 }}>
                 Delete Invoice
               </button>
-            </div>}
+            </div>)}
           </div>
         </div>
       )}
