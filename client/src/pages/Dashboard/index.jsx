@@ -28,6 +28,12 @@ const Dashboard = () => {
     return <Navigate to="/login" />;
   }
 
+  if (visibility == true) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+
   return (
     <main className="min-vh-100 min-vw-100 bg-light">
       {loading ? (
@@ -49,7 +55,7 @@ const Dashboard = () => {
                 Create Invoice
               </Button>
             </div>
-            <div className="d-flex flex-wrap">
+            <div className="d-flex flex-wrap justify-content-center">
               {invoices.length ? (
                 <>
                   {invoices.map((invoice) => (

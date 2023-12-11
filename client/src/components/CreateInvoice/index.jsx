@@ -21,7 +21,12 @@ import { CREATE_INVOICE } from '../../utils/mutations';
 </LocalizationProvider> */
 }
 //* We need to pass in the businesses _id and set it in form state so it can be used when we create the invoice
-const CreateInvoice = ({ visibility, toggleVisibility, businessId, refetch }) => {
+const CreateInvoice = ({
+  visibility,
+  toggleVisibility,
+  businessId,
+  refetch,
+}) => {
   const [formState, setFormState] = useState({
     businessId: businessId,
     serviceTitle: '',
@@ -31,7 +36,7 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId, refetch }) =>
     dateDue: '',
     serviceProvided: '',
   });
-  
+
   const [createInvoice, { error }] = useMutation(CREATE_INVOICE);
 
   const handleChange = (event) => {
@@ -61,7 +66,7 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId, refetch }) =>
       dateDue: formState.dateDue,
       serviceProvided: formState.serviceProvided,
     };
-    console.log(invoiceInput);
+    
     try {
       const { data } = await createInvoice({
         variables: { invoiceInput },
@@ -118,6 +123,16 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId, refetch }) =>
           />
         </div>
         <div className="mb-3">
+          <label className="form-label">Service title</label>
+          <input
+            type="text"
+            className="form-control"
+            name="serviceTitle"
+            placeholder="Short title"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
           <label className="form-label">Description of Service(s)</label>
           <textarea
             className="form-control"
@@ -144,7 +159,10 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId, refetch }) =>
           <div className="mb-3 my-auto">
             <label className="form-label">Payment Due By</label>
             <div className="mb-3">
-              <DatePicker selected={formState.dateDue} onChange={(date) => setDate(date)} />
+              <DatePicker
+                selected={formState.dateDue}
+                onChange={(date) => setDate(date)}
+              />
             </div>
           </div>
         </div>

@@ -25,7 +25,7 @@ const Header = (props) => {
           <div className="d-flex">
             <div className="mx-3 text-light text-end">
               <h5>{props.businessName}</h5>
-              <a className="" href={`/user/${props.businessId}`}>View My Profile</a>
+              <a className="" href={`/account/${props.businessId}`}>Account Settings</a>
             </div>
             <div className="mx-3 my-auto">
               <Avatar alt="Profile Image" src={'/static/images/avatar/3.jpg'} />
