@@ -39,16 +39,16 @@ const Home = () => {
           isActive={tab === "about"}
           onClick={() => selectTab("about")}
         >
-          About
+          What is KOI?
         </TabButton>
         <TabButton isActive={tab === "team"} onClick={() => selectTab("team")}>
-          Team
+          Meet the Team
         </TabButton>
         <TabButton
           isActive={tab === "signup"}
           onClick={() => selectTab("signup")}
         >
-         Sign-Up
+         Sign-Up Here
         </TabButton>
         </div>
         <hr />
