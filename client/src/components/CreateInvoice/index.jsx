@@ -21,10 +21,11 @@ import { CREATE_INVOICE } from '../../utils/mutations';
 </LocalizationProvider> */
 }
 //* We need to pass in the businesses _id and set it in form state so it can be used when we create the invoice
-const CreateInvoice = ({ visibility, toggleVisibility, businessId }) => {
+const CreateInvoice = ({ visibility, toggleVisibility, businessId, refetch }) => {
   const [formState, setFormState] = useState({
     businessId: businessId,
-    // clientName: '',
+    serviceTitle: '',
+    clientName: '',
     clientEmail: '',
     totalBalance: null,
     dateDue: '',
@@ -41,7 +42,6 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId }) => {
       [name]: value,
     });
   };
-  //! Bug fix: When setting date from date picker, form state gets updated properly but the date selcted in the date picker resets to empty so the user might think its not working. It is though
   const setDate = (date) => {
     setFormState({
       ...formState,
@@ -54,6 +54,8 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId }) => {
 
     const invoiceInput = {
       businessId: formState.businessId,
+      clientName: formState.clientName,
+      serviceTitle: formState.serviceTitle,
       clientEmail: formState.clientEmail,
       totalBalance: parseFloat(formState.totalBalance),
       dateDue: formState.dateDue,
@@ -65,6 +67,8 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId }) => {
         variables: { invoiceInput },
       });
       console.log(data);
+      toggleVisibility(false);
+      refetch();
     } catch (err) {
       console.error(err);
     }

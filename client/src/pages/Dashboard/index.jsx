@@ -12,9 +12,10 @@ import CreateInvoice from '../../components/CreateInvoice';
 
 import { GET_CURRENT_BUSINESS } from '../../utils/queries';
 
+
 const Dashboard = () => {
   const [visibility, toggleVisibility] = useState(false);
-  const { loading, data } = useQuery(GET_CURRENT_BUSINESS);
+  const { loading, data, refetch } = useQuery(GET_CURRENT_BUSINESS);
   const business = data?.currentBusiness || {};
 
   const { invoices } = business;
@@ -67,6 +68,7 @@ const Dashboard = () => {
                   visibility={visibility}
                   toggleVisibility={toggleVisibility}
                   businessId={business._id}
+                  refetch={refetch}
                 />
               </div>
             </>

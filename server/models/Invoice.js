@@ -8,6 +8,14 @@ const invoiceSchema = new Schema({
     ref: 'Business',
     required: true,
   },
+  serviceTitle: {
+    type: String,
+    required: true,
+  },
+  clientName: {
+    type: String,
+    required: true,
+  },
   clientEmail: {
     type: String,
     required: true,
