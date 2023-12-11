@@ -14,9 +14,12 @@ import { GET_CURRENT_BUSINESS } from '../../utils/queries';
 
 
 const Dashboard = () => {
+  console.log("test");
   const [visibility, toggleVisibility] = useState(false);
   const { loading, data, refetch } = useQuery(GET_CURRENT_BUSINESS);
   const business = data?.currentBusiness || {};
+
+  console.log(business);
 
   const { invoices } = business;
   console.log(invoices);
