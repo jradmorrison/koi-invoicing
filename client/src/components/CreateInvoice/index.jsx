@@ -104,6 +104,16 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId }) => {
             onChange={handleChange}
           />
         </div>
+        <div className="mb-3"> 
+        <label className="form-label">Service title</label>
+          <input
+            type="text"
+            className="form-control"
+            name="serviceTitle"
+            placeholder="Short title"
+            onChange={handleChange}
+          />
+        </div>
         <div className="mb-3">
           <label className="form-label">Description of Service(s)</label>
           <textarea
