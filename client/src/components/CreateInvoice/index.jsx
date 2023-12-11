@@ -22,7 +22,6 @@ import { CREATE_INVOICE } from '../../utils/mutations';
 }
 //* We need to pass in the businesses _id and set it in form state so it can be used when we create the invoice
 const CreateInvoice = ({ visibility, toggleVisibility, businessId }) => {
-  let date;
   const [formState, setFormState] = useState({
     businessId: businessId,
     // clientName: '',
@@ -141,7 +140,7 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId }) => {
           <div className="mb-3 my-auto">
             <label className="form-label">Payment Due By</label>
             <div className="mb-3">
-              <DatePicker selected={date} onChange={(date) => setDate(date)} />
+              <DatePicker selected={formState.dateDue} onChange={(date) => setDate(date)} />
             </div>
           </div>
         </div>
