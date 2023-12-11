@@ -34,7 +34,7 @@ const Home = () => {
         <img src={koi}></img>{" "}
       </div>
       <div className="d-flex flex-column justify-content-center">
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center gap-3 mt-5">
         <TabButton
           isActive={tab === "about"}
           onClick={() => selectTab("about")}
@@ -45,16 +45,16 @@ const Home = () => {
           Team
         </TabButton>
         <TabButton
-          isActive={tab === "contact"}
-          onClick={() => selectTab("contact")}
+          isActive={tab === "signup"}
+          onClick={() => selectTab("signup")}
         >
-          Contact
+         Sign-Up
         </TabButton>
         </div>
         <hr />
         {tab === "about" && <AboutTab />}
         {tab === "team" && <TeamTab />}
-        {tab === "contact" && <ContactTab />}
+        {tab === "signup" && <ContactTab />}
       </div>
     </main>
   );

@@ -1,14 +1,22 @@
 export default function ContactTab() {
-    return (
-      <div className="d-flex justify-content-center">
-        <p>
-          You can find me online here:
-        </p>
-        <ul>
-          <li>admin@mysite.com</li>
-          <li>+123456789</li>
-        </ul>
+  return (
+    <div className="justify-content-center">
+      <div className="container">
+        <p>Join the best invoicing platform today!</p>
       </div>
-    );
-  }
-  
+      <div className="container">
+        <button type="button" class="btn btn-warning">
+          Click Here to Sign Up
+        </button>
+      </div>
+      <div className="container">
+        <p>Already a member?</p>
+      </div>
+      <div className="container">
+        <button type="button" class="btn btn-secondary ">
+          Login
+        </button>
+      </div>
+    </div>
+  );
+}
