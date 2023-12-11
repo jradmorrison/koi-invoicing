@@ -51,6 +51,8 @@ const invoiceResolver = {
       {
         invoiceInput: {
           businessId,
+          serviceTitle,
+          clientName,
           clientEmail,
           totalBalance,
           dateDue,
@@ -61,6 +63,8 @@ const invoiceResolver = {
       const now = new Date().toISOString();
       const newInvoice = {
         businessId,
+        serviceTitle,
+        clientName,
         clientEmail,
         totalBalance,
         dateDue,
@@ -80,11 +84,11 @@ const invoiceResolver = {
         const EmailPackage = {
           from: business.name,
           fromEmail: business.email,
-          to: 'Client Name',
+          to: clientName,
           toEmail: clientEmail,
           invoice: `Invoice #${invoice._id}`,
           invoiceDate: now,
-          paymentDueDate: dateDue.toString(),
+          paymentDueDate: dateDue,
           totalAmount: totalBalance.toString(),
           taxes: '0.00',
           totalDue: totalBalance.toString(),

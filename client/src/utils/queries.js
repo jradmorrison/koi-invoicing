@@ -11,7 +11,9 @@ query Query {
     userSince
     invoices {
       _id
+      serviceTitle
       clientEmail
+      clientName
       dateDue
       serviceProvided
       status

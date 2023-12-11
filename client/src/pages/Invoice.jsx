@@ -109,7 +109,7 @@ const Invoice = () => {
                 minHeight: '4rem',
                 marginBottom: '3rem',
               }}>
-              <p>Due {invoice.dateDue}</p>
+              <p>Due By{invoice.dateDue}</p>
               <h4>${invoice.totalBalance}</h4>
             </div>
             <button
