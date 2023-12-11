@@ -35,7 +35,7 @@ const InvoiceCard = ({ invoice }) => {
   }
 
   return (
-    <div className="card m-3" style={{ width: '18rem' }}>
+    <div className="card m-3" style={{ width: '20rem' }}>
       <div className="card-body">
         <h4>{invoice.serviceTitle}</h4>
         <h5>{invoice.clientName}</h5>
@@ -47,6 +47,7 @@ const InvoiceCard = ({ invoice }) => {
         <p className="card-text mb-1">
           Status: <span style={statusColor}>{status}</span>
         </p>
+        <h5 className="card-title fs-6 mt-2 ">Invoice # {invoice._id}</h5>
         <a href={`/invoice/${invoice._id}`} className="card-link">
           View Details
         </a>

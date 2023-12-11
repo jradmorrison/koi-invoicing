@@ -88,6 +88,16 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId, refetch }) =>
       <div></div>
       <div className="p-3">
         <div className="fs-2 text-center mb-3">New Invoice</div>
+        <div className="mb-3"> 
+        <label className="form-label">Header</label>
+          <input
+            type="text"
+            className="form-control"
+            name="serviceTitle"
+            placeholder="Displayed on dashboard for easy recognition"
+            onChange={handleChange}
+          />
+        </div>
         <div className="mb-3">
           <label className="form-label">Client Full Name</label>
           <input
@@ -104,16 +114,6 @@ const CreateInvoice = ({ visibility, toggleVisibility, businessId, refetch }) =>
             className="form-control"
             name="clientEmail"
             placeholder="name@example.com"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3"> 
-        <label className="form-label">Service title</label>
-          <input
-            type="text"
-            className="form-control"
-            name="serviceTitle"
-            placeholder="Short title"
             onChange={handleChange}
           />
         </div>
