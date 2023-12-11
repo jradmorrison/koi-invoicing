@@ -6,7 +6,6 @@ const InvoiceCard = ({ invoice }) => {
   
   useEffect(() => {
     const due = invoice.dateDue;
-    console.log(`compare : ${due} TO ${now}`);
     if (due < now && invoice.status !== 'COMPLETE') {
       setStatus('PAST DUE');
     } else if (due > now && invoice.status !== 'COMPLETE') {
@@ -14,7 +13,6 @@ const InvoiceCard = ({ invoice }) => {
     } else {
       setStatus(invoice.status);
     }
-    console.log(status);
   }, []);
 
   // const dateDue = new Date(invoice.dateDue);

@@ -66,7 +66,7 @@ const CreateInvoice = ({
       dateDue: formState.dateDue,
       serviceProvided: formState.serviceProvided,
     };
-    console.log(invoiceInput);
+    
     try {
       const { data } = await createInvoice({
         variables: { invoiceInput },
