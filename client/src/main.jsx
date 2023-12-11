@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import ErrorPage from './pages/ErrorPage';
 import Dashbaord from './pages/Dashboard';
 import Invoice from './pages/Invoice.jsx';
+import Account from './pages/Account';
 
 // define router paths
 const router = createBrowserRouter([
@@ -34,6 +35,9 @@ const router = createBrowserRouter([
       }, {
         path: '/invoice/:invoiceId',
         element: <Invoice />
+      }, {
+        path: '/account/:businessId',
+        element: <Account />
       }
     ]
   },
