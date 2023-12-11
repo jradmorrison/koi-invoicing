@@ -15,6 +15,9 @@ import Auth from '../../utils/auth';
 // import stylesheet
 import './style.css';
 
+//import photo
+import koiimg from '../../assets/images/logo4.png'
+
 // login component
 const Login = () => {
   // state
@@ -63,7 +66,7 @@ const Login = () => {
     <main className="d-flex justify-content-center align-items-center min-vh-100 flex-column">
       <div id="login" className="p-3 rounded-5 col-lg-3 col-md-6 col-10">
         <div>
-          <div className="text-center heading">Koi</div>
+          <div className="text-center heading"><img id="photo" src={koiimg}></img></div>
           <div className="text-center sub-heading">Sign-In</div>
         </div>
         <form onSubmit={handleFormSubmit}>
