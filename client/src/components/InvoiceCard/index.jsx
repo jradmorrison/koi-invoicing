@@ -1,26 +1,35 @@
 import formatDate from '../../utils/dateFormatter.js';
+import {useEffect, useState} from 'react';
 const InvoiceCard = ({ invoice }) => {
-  const now = new Date();
+  const [status, setStatus] = useState('PENDING');
+  const now = new Date().valueOf();
   
-  if (invoice.dateDue < now && invoice.status !== 'COMPLETE') {
-    invoice.status = 'PAST DUE';
-  } else if (invoice.dateDue > now && invoice.status !== 'COMPLETE') {
-    invoice.status = 'PENDING';
-  }
+  useEffect(() => {
+    const due = invoice.dateDue;
+    console.log(`compare : ${due} TO ${now}`);
+    if (due < now && invoice.status !== 'COMPLETE') {
+      setStatus('PAST DUE');
+    } else if (due > now && invoice.status !== 'COMPLETE') {
+      setStatus('PENDING');
+    } else {
+      setStatus(invoice.status);
+    }
+    console.log(status);
+  }, []);
 
   // const dateDue = new Date(invoice.dateDue);
 
-  let status;
-  if (invoice.status == 'PENDING') {
-    status = {
+  let statusColor;
+  if (status === 'PENDING') {
+    statusColor = {
       color: 'orange',
     };
-  } else if (invoice.status == 'COMPLETE') {
-    status = {
+  } else if (status === 'COMPLETE') {
+    statusColor = {
       color: 'green',
     };
-  } else if (invoice.status == 'PAST DUE') {
-    status = {
+  } else if (status === 'PAST DUE') {
+    statusColor = {
       color: 'red',
     };
   }
@@ -36,7 +45,7 @@ const InvoiceCard = ({ invoice }) => {
         </h6>
         <p className="card-text mb-1">{`Amount due: $${invoice.totalBalance}`}</p>
         <p className="card-text mb-1">
-          Status: <span style={status}>{invoice.status}</span>
+          Status: <span style={statusColor}>{status}</span>
         </p>
         <a href={`/invoice/${invoice._id}`} className="card-link">
           View Details
