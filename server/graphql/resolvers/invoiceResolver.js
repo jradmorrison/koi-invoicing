@@ -106,7 +106,7 @@ const invoiceResolver = {
     // update invvoice
     updateInvoice: async (
       _,
-      { ID, invoiceUpdate: { totalBalance, status } }
+      { ID, invoiceUpdate: { totalBalance, status, clientEmail, clientName, serviceProvided, serviceTitle } }
     ) => {
       try {
         const updatedInvoice = await Invoice.findByIdAndUpdate(
@@ -114,6 +114,10 @@ const invoiceResolver = {
           {
             totalBalance,
             status,
+            clientEmail, 
+            clientName, 
+            serviceProvided, 
+            serviceTitle
           },
           { new: true }
         );

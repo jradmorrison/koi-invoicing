@@ -17,11 +17,10 @@ import { UPDATE_INVOICE } from '../../utils/mutations';
 const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
 
   const [formState, setFormState] = useState({
-    businessId: businessId,
-    // clientName: '',
+    serviceTitle: invoice.serviceTitle,
+    clientName: invoice.clientName,
     clientEmail: invoice.clientEmail,
     totalBalance: invoice.totalBalance,
-    dateDue: invoice.dateDue,
     serviceProvided: invoice.serviceProvided,
   });
   
@@ -47,17 +46,21 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
     e.preventDefault();
 
     const invoiceInput = {
-      businessId: formState.businessId,
+      clientName: formState.clientName,
       clientEmail: formState.clientEmail,
       totalBalance: parseFloat(formState.totalBalance),
       dateDue: formState.dateDue,
+      serviceTitle: formState.serviceTitle,
       serviceProvided: formState.serviceProvided,
     };
+
     console.log(invoiceInput);
     try {
       const { data } = await updateInvoice({
-        variables: { invoiceInput },
+        variables: { id: invoice._id, invoiceUpdate: invoiceInput },
       });
+      console.log(invoice._id)
+
       console.log(data);
     } catch (err) {
       console.error(err);
@@ -75,7 +78,6 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
           ❌
         </Button>
       </div>
-      <div></div>
       <div className="p-3">
         <div className="fs-2 text-center mb-3">New Invoice</div>
         <div className="mb-3">
@@ -85,6 +87,8 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
             className="form-control"
             name="clientName"
             onChange={handleChange}
+            placeholder='John Doe'
+            value={formState.clientName}
           />
         </div>
         <div className="mb-3">
@@ -95,6 +99,7 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
             name="clientEmail"
             placeholder="name@example.com"
             onChange={handleChange}
+            value={formState.clientEmail}
           />
         </div>
         <div className="mb-3"> 
@@ -105,6 +110,7 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
             name="serviceTitle"
             placeholder="Short title"
             onChange={handleChange}
+            value={formState.serviceTitle}
           />
         </div>
         <div className="mb-3">
@@ -113,7 +119,9 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
             className="form-control"
             name="serviceProvided"
             rows="3"
-            onChange={handleChange}></textarea>
+            onChange={handleChange}
+            value={formState.serviceProvided}>
+            </textarea>
         </div>
         <div className="d-flex justify-content-around">
           <div className="mb-3">
@@ -128,13 +136,14 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
                 aria-label="Amount (to the nearest dollar)"
                 name="totalBalance"
                 onChange={handleChange}
+                value={formState.totalBalance}
               />
             </div>
           </div>
           <div className="mb-3 my-auto">
             <label className="form-label">Payment Due By</label>
             <div className="mb-3">
-              <DatePicker selected={formState.dateDue} onChange={(date) => setDate(date)} />
+              <DatePicker selected={formState.dateDue} onChange={(date) => setDate(date)} value={formState.dateDue}/>
             </div>
           </div>
         </div>
