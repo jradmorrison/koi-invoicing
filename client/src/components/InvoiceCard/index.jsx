@@ -1,3 +1,4 @@
+import formatDate from '../../utils/dateFormatter.js';
 const InvoiceCard = ({ invoice }) => {
   const now = new Date();
   
@@ -27,10 +28,11 @@ const InvoiceCard = ({ invoice }) => {
   return (
     <div className="card m-3" style={{ width: '18rem' }}>
       <div className="card-body">
-        <h4>Short Title</h4>
+        <h4>{invoice.serviceTitle}</h4>
+        <h5>{invoice.clientName}</h5>
         <h5 className="card-title fs-6">Invoice # {invoice._id}</h5>
         <h6 className="card-subtitle mb-2 text-body-secondary">Due Date:
-          {invoice.dateDue}
+          {formatDate(invoice.dateDue)}
         </h6>
         <p className="card-text mb-1">{`Amount due: $${invoice.totalBalance}`}</p>
         <p className="card-text mb-1">
