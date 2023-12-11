@@ -23,6 +23,8 @@ module.exports = `
     }
 
     input InvoiceUpdate {
+        serviceTitle: String
+        clientName: String
         clientEmail: String
         totalBalance: Float
         status: String
