@@ -1,6 +1,7 @@
 #login {
     position: relative;
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
+    background-color: #B3B3C7;
     /* opacity: 0.5; */
 }
 
@@ -12,4 +13,8 @@
 .sub-heading {
     color: var(--light);
     font-size: 3rem;
+}
+
+#photo {
+    height: 200px;
 }
