@@ -8,15 +8,10 @@ export default function TeamTab() {
   return (
     <div>
       <div className="d-flex justify-content-center">
-        <h3 className="text-center teamHeader mb-4">
-          Meet the Masterminds <br /> Behind KOI Invoicing Services
+        <h3 className="text-center teamHeader mt-4">
+          The Masterminds <br /> Behind KOI Invoicing Services
         </h3>
       </div>
-
-      <div className="text-center about">
-        <p>Brandon Barnes, Jared Morrison, Trae Roy, Kathryn Dougherty</p>
-      </div>
-
       <div className="1 d-flex justify-content-center mt-5">
         <div className="2 ">
           <div className="card m-3" style={{ width: "20rem" }}>
@@ -26,7 +21,7 @@ export default function TeamTab() {
               <h6 className="card-subtitle mb-2 text-body-secondary">
                 Full-Stack Developer
               </h6>
-              <p className="card-text">Short bio</p>
+              <p className="card-text"></p>
               <a
                 href="https://github.com/ThatZiro"
                 target="_blank"
@@ -50,7 +45,7 @@ export default function TeamTab() {
               <h6 className="card-subtitle mb-2 text-body-secondary">
                 Full Stack Developer
               </h6>
-              <p className="card-text">Short bio</p>
+              <p className="card-text"></p>
               <a
                 href="https://github.com/jradmorrison"
                 target="_blank"
@@ -77,7 +72,7 @@ export default function TeamTab() {
                 <h6 className="card-subtitle mb-2 text-body-secondary">
                 Full-Stack Developer
                 </h6>
-                <p className="card-text">short bio</p>
+                <p className="card-text"></p>
                 <a
                   href="https://github.com/Roesnware"
                   target="_blank"
@@ -102,7 +97,7 @@ export default function TeamTab() {
                   <h6 className="card-subtitle mb-2 text-body-secondary">
                     CSS Design
                   </h6>
-                  <p className="card-text">Short bio</p>
+                  <p className="card-text"></p>
                   <a
                     href="https://github.com/kathrynfisher3700"
                     target="_blank"
