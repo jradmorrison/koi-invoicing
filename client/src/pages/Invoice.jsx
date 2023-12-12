@@ -6,18 +6,13 @@ import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { DELETE_INVOICE } from '../utils/mutations';
 
-
-
 // import packages
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 // import packages for pdf export
 
-
-
-import { GET_ONE_INVOICE} from '../utils/queries';
+import { GET_ONE_INVOICE } from '../utils/queries';
 import Auth from '../utils/auth';
-
 
 import Header from '../components/Header';
 import InvoiceToPDF from '../components/InvoiceToPDF';
@@ -42,10 +37,12 @@ const Invoice = () => {
   const { loading, data } = useQuery(GET_ONE_INVOICE, {
     variables: { id: params.invoiceId },
   });
-  
+
+  const [isLoggedIn] = useState(Auth.loggedIn());
+
   const invoice = data?.getInvoiceByID || [];
   const business = invoice.businessId || [];
-  
+
   const [deleteInvoice, { err }] = useMutation(DELETE_INVOICE);
 
   console.log(invoice);
@@ -66,26 +63,24 @@ const Invoice = () => {
 
   const closeModal = () => {
     setVisibility(false);
-    document.body.style.overflow = "auto";
-  }
+    document.body.style.overflow = 'auto';
+  };
 
   const handleUpdateInvoice = async () => {
-    console.log("update me!");
     setVisibility(true);
     //document.body.style.overflow = 'hidden';
-  }
+  };
 
   const handleDeleteInvoice = async (invoiceID) => {
     try {
       const { data } = await deleteInvoice({
-        variables: { id: invoiceID }
+        variables: { id: invoiceID },
       });
       document.location.assign('/dashboard');
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   // return
   return (
@@ -97,7 +92,7 @@ const Invoice = () => {
           <Link to={'/dashboard'}>Back to Dashboard</Link>
         </Button>
       </div>
- 
+
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -114,11 +109,11 @@ const Invoice = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              backgroundColor: "#010144",
+              backgroundColor: '#010144',
               paddingTop: '16rem',
-              paddingLeft: "1rem",
-              paddingRight: "1rem",
-              borderRadius: "2rem"
+              paddingLeft: '1rem',
+              paddingRight: '1rem',
+              borderRadius: '2rem',
             }}>
             <div
               style={{
@@ -163,50 +158,68 @@ const Invoice = () => {
               }}>
               Export to PDF
             </button>
-            {!Auth.loggedIn ? (<div>
-              <button
-                onClick={handleMakePayment}
+            {!isLoggedIn ? (
+              <div>
+                <button
+                  onClick={handleMakePayment}
+                  style={{
+                    padding: '.5rem',
+                    borderRadius: '1rem',
+                    backgroundColor: '#FDC447',
+                    color: '#010144',
+                  }}>
+                  Make Payment
+                </button>
+              </div>
+            ) : (
+              <div
                 style={{
-                  padding: '.5rem',
-                  borderRadius: '1rem',
-                  backgroundColor: '#FDC447',
-                  color: '#010144',
+                  display: 'flex',
+                  gap: '1rem',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}>
-                Make Payment
-              </button>
-            </div>) : (<div style={{ display: "flex", gap: "1rem", alignItems: "center", justifyContent: "center" }}>
-              {visibility && (
-                <>
-                  <div className="overlay"></div>
-                  <div
-                    id="createInvoiceForm"
-                    className="rounded-4 px-3 py-3 col-xl-6 col-sm-8 col-12 position-absolute top-50 start-50 translate-middle">
-                    <EditInvoice visibility={visibility} toggleVisibility={setVisibility} invoice={invoice} />
-                  </div>
-                </>
-              )}
-              <button
-                onClick={() => { handleUpdateInvoice() }}
-                style={{
-                  padding: '.5rem',
-                  borderRadius: '1rem',
-                  backgroundColor: '#FDC447',
-                  textAlign: 'center',
-                  color: '#010144',
-                }}>
-                Edit Invoice
-              </button>
-              <button
-                onClick={() => { handleDeleteInvoice(invoice._id) }}
-                style={{
-                  padding: '.5rem',
-                  borderRadius: '1rem',
-                  backgroundColor: '#FDC447',
-                  color: '#010144',
-                }}>
-                Delete Invoice
-              </button>
-            </div>)}
+                {visibility && (
+                  <>
+                    <div className="overlay"></div>
+                    <div
+                      id="createInvoiceForm"
+                      className="rounded-4 px-3 py-3 col-xl-6 col-sm-8 col-12 position-absolute top-50 start-50 translate-middle">
+                      <EditInvoice
+                        visibility={visibility}
+                        toggleVisibility={setVisibility}
+                        invoice={invoice}
+                      />
+                    </div>
+                  </>
+                )}
+                <button
+                  onClick={() => {
+                    handleUpdateInvoice();
+                  }}
+                  style={{
+                    padding: '.5rem',
+                    borderRadius: '1rem',
+                    backgroundColor: '#FDC447',
+                    textAlign: 'center',
+                    color: '#010144',
+                  }}>
+                  Edit Invoice
+                </button>
+                <button
+                  onClick={() => {
+                    handleDeleteInvoice(invoice._id);
+                  }}
+                  style={{
+                    padding: '.5rem',
+                    borderRadius: '1rem',
+                    backgroundColor: '#FDC447',
+                    color: '#010144',
+                  }}>
+                  Delete Invoice
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}
