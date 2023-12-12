@@ -12,6 +12,8 @@ import { CREATE_BUSINESS } from '../../utils/mutations';
 // import authentication
 import Auth from '../../utils/auth';
 
+import koiimg from '../../assets/images/logo4.png';
+
 // signup component
 const Signup = () => {
   // state
@@ -26,7 +28,7 @@ const Signup = () => {
 
   if (Auth.loggedIn()) {
     return <Navigate to="/dashboard" />;
-  };
+  }
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -44,30 +46,34 @@ const Signup = () => {
     // console.log(formState);
 
     try {
-      console.log("Test");
       const businessInput = {
-        "name": formState.businessName,
-        "email": formState.email,
-        "password": formState.password,
-        "companyLogo": "null"
-      }
+        name: formState.businessName,
+        email: formState.email,
+        password: formState.password,
+        companyLogo: 'null',
+      };
       const { data } = await createBusiness({
         variables: { businessInput },
       });
 
-      console.log(data);
       Auth.login(data.createBusiness.token);
     } catch (e) {
       console.error(e);
     }
   };
 
-  // return 
+  // return
   return (
     <main className="d-flex justify-content-center align-items-center min-vh-100 flex-column">
-      <div id="login" className="p-3 rounded-5 col-xl-3 col-lg-4 col-md-6 col-10">
+      <div
+        id="login"
+        className="p-3 rounded-5 col-xl-3 col-lg-4 col-md-6 col-10">
         <div>
-          <div className="text-center heading">Koi</div>
+          <div className="text-center heading">
+            <a href="/">
+              <img id="photo" src={koiimg} />
+            </a>
+          </div>
           <div className="text-center sub-heading">Create Account</div>
         </div>
         <form onSubmit={handleFormSubmit}>
@@ -105,12 +111,12 @@ const Signup = () => {
             <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
           )}
           <div className="d-flex align-items-center flex-column">
-            <button className="btn btn-dark px-3" type="submit">
+            <button className="btn btn-dark px-3 mb-2" type="submit">
               Create Account
             </button>
-            <button type="button" class="btn btn-outline-secondary btn-sm">
-          Back to Login
-        </button>
+            <a href="/login" class="btn btn-outline-secondary btn-sm">
+              Back to Login
+            </a>
           </div>
         </form>
       </div>
@@ -120,4 +126,3 @@ const Signup = () => {
 
 // export signup
 export default Signup;
-
