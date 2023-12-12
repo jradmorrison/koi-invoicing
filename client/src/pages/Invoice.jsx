@@ -1,24 +1,27 @@
 import { Navigate, Link } from 'react-router-dom';
-import Auth from '../utils/auth';
+import { useRef, useState } from 'react';
 import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
-
+import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { DELETE_INVOICE } from '../utils/mutations';
 
-import EditInvoice from '../components/EditInvoice';
+
 
 // import packages
 import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 // import packages for pdf export
-import { useRef, useState } from 'react';
 
-import { useQuery } from '@apollo/client';
+
+
 import { GET_ONE_INVOICE } from '../utils/queries';
-import Header from '../components/Header';
+import Auth from '../utils/auth';
 
+
+import Header from '../components/Header';
 import InvoiceToPDF from '../components/InvoiceToPDF';
+import EditInvoice from '../components/EditInvoice';
 
 const demoInvoice = {
   invoiceID: '92842',
@@ -71,8 +74,9 @@ const Invoice = () => {
   const handleDeleteInvoice = async (invoiceID) => {
     try {
       const { data } = await deleteInvoice({
-        variables: { invoiceID }
+        variables: { id: invoiceID }
       });
+      document.location.assign('/dashboard');
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -82,7 +86,7 @@ const Invoice = () => {
   // return
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
 
       <div>
         <Button style={{ margin: '1rem', color: '#D9D9D9' }} variant="text">

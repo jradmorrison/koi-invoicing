@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
-
+import formatDate from '../../utils/dateFormatter';
 // invoice component
-const InvoiceToPDF = ({ invoice: { _id, businessID, clientEmail, clientName, totalBalance, status, dateDue, serviceProvided, serviceTitle, createdOn } }) => {
+const InvoiceToPDF = ({ invoice: { _id, businessId, clientEmail, clientName, totalBalance, status, dateDue, serviceProvided, serviceTitle, createdOn } }) => {
 
     // TODO: make qurery to db to get business name from id
     const businessName = ""
@@ -18,11 +18,11 @@ const InvoiceToPDF = ({ invoice: { _id, businessID, clientEmail, clientName, tot
                         <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingTop: "2rem" }}>
                             <div style={{ display: "flex", flexDirection: "column" }}>
                                 <h1 style={{ paddingBottom: ".2rem", paddingTop: "2rem", fontWeight: "bold", fontSize: "1.2rem" }}>From</h1>
-                                <h3 style={{ paddingBottom: ".2rem", fontSize: "1rem" }}>{businessID}</h3>
+                                <h3 style={{ paddingBottom: ".2rem", fontSize: "1rem" }}>{businessId}</h3>
                             </div>
                             <div style={{ display: "flex", flexDirection: "column" }}>
                                 <h1 style={{ paddingBottom: ".2rem", paddingTop: "2rem", fontWeight: "bold", fontSize: "1.2rem" }}>Invoice Date</h1>
-                                <h3 style={{ paddingBottom: ".2rem", fontSize: "1rem" }}>{createdOn}</h3>
+                                <h3 style={{ paddingBottom: ".2rem", fontSize: "1rem" }}>{formatDate(createdOn)}</h3>
                             </div>
                         </div>
                         <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
@@ -35,7 +35,7 @@ const InvoiceToPDF = ({ invoice: { _id, businessID, clientEmail, clientName, tot
                             </div>
                             <div style={{ display: "flex", flexDirection: "column" }}>
                                 <h1 style={{ paddingBottom: ".2rem", paddingTop: "2rem", fontWeight: "bold", fontSize: "1.2rem" }}>Payment Due</h1>
-                                <h3 style={{ paddingBottom: ".2rem", fontSize: "1rem" }}>{dateDue}</h3>
+                                <h3 style={{ paddingBottom: ".2rem", fontSize: "1rem" }}>{formatDate(dateDue)}</h3>
                                 <h1></h1>
                                 <h1></h1>
                             </div>

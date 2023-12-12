@@ -1,8 +1,9 @@
 import { useQuery } from '@apollo/client';
+import Button from '@mui/material/Button';
+import formatDate from '../../utils/dateFormatter';
 
 import { GET_CURRENT_BUSINESS } from '../../utils/queries';
 import Auth from '../../utils/auth';
-
 
 const Account = () => {
   if (!Auth.loggedIn()) {
@@ -18,7 +19,19 @@ const Account = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div></div>
+        <>
+          <div className="p-3">
+            <a href="/dashboard">
+              <Button>Back to dashboard</Button>
+            </a>
+            <div className="text-center fs-2">Account Details</div>
+          </div>
+          <div className="container">
+            <p>Business Name: {business.name}</p>
+            <p>Business email: {business.email}</p>
+            <p>User Since: {formatDate(business.userSince)}</p>
+          </div>
+        </>
       )}
     </main>
   );

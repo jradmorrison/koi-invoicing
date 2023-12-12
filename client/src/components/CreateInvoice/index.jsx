@@ -12,15 +12,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { CREATE_INVOICE } from '../../utils/mutations';
 
-//DATE PICKER
-{
-  /* <LocalizationProvider dateAdapter={AdapterDayjs}>
-<DemoContainer components={['DateField']}>
-  <DateField label="Basic date field" />
-</DemoContainer>
-</LocalizationProvider> */
-}
-//* We need to pass in the businesses _id and set it in form state so it can be used when we create the invoice
+
 const CreateInvoice = ({
   visibility,
   toggleVisibility,
