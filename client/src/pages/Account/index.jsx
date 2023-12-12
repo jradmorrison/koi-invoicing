@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
+
 import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 import formatDate from '../../utils/dateFormatter';
 
 import { GET_CURRENT_BUSINESS } from '../../utils/queries';
-import { UPDATE_BUSINESS } from '../../utils/mutations';
+import { UPDATE_BUSINESS, DELETE_BUSINESS } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import './style.css';
 
@@ -19,10 +21,11 @@ const Account = () => {
     email: '',
   });
 
+  const [updateBusiness, { error }] = useMutation(UPDATE_BUSINESS);
+  const [deleteBusiness, { error: err }] = useMutation(DELETE_BUSINESS);
+
   const { loading, data, refetch } = useQuery(GET_CURRENT_BUSINESS);
   const business = data?.currentBusiness || {};
-
-  const [updateBusiness, { error }] = useMutation(UPDATE_BUSINESS);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -60,13 +63,32 @@ const Account = () => {
         console.log(data);
         closeModel();
         refetch();
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error(error);
       }
     }
   };
 
-  console.log(formState);
+  
+  const handleAccountDelete = async () => {
+    
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete your account?'
+    );
+    if (confirmDelete == true) {
+      try {
+        const { data } = await deleteBusiness({
+          variables: { id: business._id },
+        });
+        console.log(data);
+        window.location.replace('/')
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  };
+
+  // console.log(formState);
   return (
     <main className="">
       {loading ? (
@@ -91,10 +113,21 @@ const Account = () => {
               User Since:{' '}
               <span className="fw-bold">{formatDate(business.userSince)}</span>
             </p>
-            <div>
-              <Button variant="outlined" onClick={showModel}>
-                Edit Account Details
-              </Button>
+            <div className="d-flex">
+              <div className="m-3">
+                <Button variant="outlined" onClick={showModel}>
+                  Edit Account Details
+                </Button>
+              </div>
+              <div className="m-3">
+                <Button
+                  variant="outlined"
+                  color="error"
+                  startIcon={<DeleteIcon />}
+                  onClick={handleAccountDelete}>
+                  Delete Account
+                </Button>
+              </div>
             </div>
           </div>
           {visibility ? (
