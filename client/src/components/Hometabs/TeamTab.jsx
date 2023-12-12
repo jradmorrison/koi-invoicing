@@ -2,6 +2,7 @@
 import brandon from '../../assets/images/brandonicon.png';
 import trae from '../../assets/images/TraeIcon.png';
 import kathryn from '../../assets/images/kathryn-icon.png';
+import jared from '../../assets/images/jared-icon.png'
 
 export default function TeamTab() {
   return (
@@ -24,11 +25,12 @@ export default function TeamTab() {
     <a href="#" className="card-link">LinkedIn</a>
   </div>
   <div className="card-body text-center">
+    <img src={jared} className='icon'></img>
     <h5 className="card-title">Jared Morrison</h5>
-    <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+    <h6 className="card-subtitle mb-2 text-body-secondary">Full Stack Developer</h6>
     <p className="card-text">Short bio</p>
-    <a href="https://github.com/jradmorrison" className="card-link">GitHub</a>
-    <a href="#" className="card-link">LinkedIn</a>
+    <a href="https://github.com/jradmorrison" className="card-link" target='_blank'>GitHub</a>
+    <a href="https://www.linkedin.com/in/jradmorrison/" className="card-link" target='_blank'>LinkedIn</a>
   </div>
   <div className="card-body text-center">
   <img src={trae} className='icon'></img>
