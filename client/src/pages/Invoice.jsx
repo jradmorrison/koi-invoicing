@@ -15,13 +15,14 @@ import { PDFExport, savePDF } from '@progress/kendo-react-pdf';
 
 
 
-import { GET_ONE_INVOICE } from '../utils/queries';
+import { GET_ONE_INVOICE} from '../utils/queries';
 import Auth from '../utils/auth';
 
 
 import Header from '../components/Header';
 import InvoiceToPDF from '../components/InvoiceToPDF';
 import EditInvoice from '../components/EditInvoice';
+import formatDate from '../utils/dateFormatter.js';
 
 const demoInvoice = {
   invoiceID: '92842',
@@ -41,11 +42,14 @@ const Invoice = () => {
   const { loading, data } = useQuery(GET_ONE_INVOICE, {
     variables: { id: params.invoiceId },
   });
+  
   const invoice = data?.getInvoiceByID || [];
-
+  const business = invoice.businessId || [];
+  
   const [deleteInvoice, { err }] = useMutation(DELETE_INVOICE);
 
   console.log(invoice);
+  console.log(business);
 
   // for exporting to pdf
   const pdfExportComponent = useRef(null);
@@ -74,8 +78,9 @@ const Invoice = () => {
   const handleDeleteInvoice = async (invoiceID) => {
     try {
       const { data } = await deleteInvoice({
-        variables: { invoiceID }
+        variables: { id: invoiceID }
       });
+      document.location.assign('/dashboard');
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -92,7 +97,7 @@ const Invoice = () => {
           <Link to={'/dashboard'}>Back to Dashboard</Link>
         </Button>
       </div>
-
+ 
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -125,7 +130,7 @@ const Invoice = () => {
                 Invoice - {invoice.serviceTitle}
               </h1>
               <p style={{ fontSize: '1.5rem', padding: '0', margin: '0' }}>
-                Date Billed: {invoice.createdOn}
+                Date Billed: {formatDate(invoice.createdOn)}
               </p>
               <p style={{ fontSize: '1.5rem', padding: '0', marginTop: '0' }}>
                 Ref ID: {invoice._id}
@@ -143,7 +148,7 @@ const Invoice = () => {
                 minHeight: '4rem',
                 marginBottom: '3rem',
               }}>
-              <p>Due By: {invoice.dateDue}</p>
+              <p>Due By: {formatDate(invoice.dateDue)}</p>
               <h4>${invoice.totalBalance}</h4>
             </div>
             <button

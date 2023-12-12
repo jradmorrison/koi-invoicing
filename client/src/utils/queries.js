@@ -44,19 +44,23 @@ query Query($id: ID!) {
 `;
 
 export const GET_ONE_INVOICE = gql`
-query Query($id: ID!) {
-  getInvoiceByID(ID: $id) {
-    _id
-    clientEmail
-    dateDue
-    clientName
-    serviceTitle
-    serviceProvided
-    status
-    totalBalance
-    businessId
-  }
-}
+    query Query($id: ID!) {
+        getInvoiceByID(ID: $id) {
+            _id
+            clientEmail
+            clientName
+            dateDue
+            serviceProvided
+            serviceTitle
+            status
+            totalBalance
+            createdOn
+            businessId {
+                _id
+                name
+            }
+        }
+    }
 `;
 
 export const QUERY_INVOICES_BY_BUSINESS = gql`

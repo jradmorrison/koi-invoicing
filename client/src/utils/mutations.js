@@ -61,6 +61,8 @@ mutation Mutation($id: ID!, $invoiceUpdate: InvoiceUpdate) {
     _id
     clientEmail
     serviceProvided
+    serviceTitle
+    clientName
     dateDue
     status
     totalBalance
