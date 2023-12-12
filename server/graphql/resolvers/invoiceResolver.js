@@ -3,6 +3,8 @@ const Invoice = require('../../models/Invoice');
 const Business = require('../../models/Business');
 const mail = require('../../utils/nodemailer');
 
+const formatDate = require('../../utils/dateFormatter')
+
 // import mongoose
 const {
   Types: { ObjectId },
@@ -86,11 +88,12 @@ const invoiceResolver = {
           toEmail: clientEmail,
           invoice: `Invoice #${invoice._id}`,
           invoiceDate: invoice.createdOn,
-          paymentDueDate: dateDue,
+          paymentDueDate: formatDate(dateDue),
           totalAmount: totalBalance.toString(),
           taxes: '0.00',
           totalDue: totalBalance.toString(),
           desc: serviceProvided,
+          url: "http://localhost:3000/invoice/" + invoice._id
         };
 
         mail(EmailPackage);
