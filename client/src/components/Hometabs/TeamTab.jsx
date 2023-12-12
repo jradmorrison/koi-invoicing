@@ -7,11 +7,11 @@ export default function TeamTab() {
   return (
     <div>
       <div className="d-flex justify-content-center">
-        <h3 className="text-center">
+        <h3 className="text-center teamHeader">
           Meet the Masterminds <br /> Behind KOI Invoicing Services
         </h3>
       </div>
-      <div className="text-center">
+      <div className="text-center about">
         <p>Brandon Barnes, Jared Morrison, Trae Roy, Kathryn Dougherty</p>
       </div>
       <div className="card" style={{width: "20rem"}}>
@@ -20,31 +20,31 @@ export default function TeamTab() {
     <h5 className="card-title">Brandon Barnes</h5>
     <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
     <p className="card-text">Short bio</p>
-    <a href="https://github.com/ThatZiro" className="card-link">GitHub</a>
-    <a href="#" className="card-link">LinkedIn</a>
+    <a href="https://github.com/ThatZiro" target="_blank" className="card-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/brandon-b-tech/" target="_blank" className="card-link">LinkedIn</a>
   </div>
   <div className="card-body text-center">
     <h5 className="card-title">Jared Morrison</h5>
     <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
     <p className="card-text">Short bio</p>
-    <a href="https://github.com/jradmorrison" className="card-link">GitHub</a>
-    <a href="#" className="card-link">LinkedIn</a>
+    <a href="https://github.com/jradmorrison" target="_blank" className="card-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/jradmorrison/" target="_blank" className="card-link">LinkedIn</a>
   </div>
   <div className="card-body text-center">
   <img src={trae} className='icon'></img>
     <h5 className="card-title">Trae Roy</h5>
     <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
     <p className="card-text">short bio</p>
-    <a href="https://github.com/Roesnware" className="card-link">GitHub</a>
-    <a href="#" className="card-link">LinkedIn</a>
+    <a href="https://github.com/Roesnware" target="_blank" className="card-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/trae-roy-815a02244/" target="_blank" className="card-link">LinkedIn</a>
   </div>
   <div className="card-body text-center">
   <img src={kathryn} className='icon'></img>
     <h5 className="card-title">Kathryn Dougherty</h5>
     <h6 className="card-subtitle mb-2 text-body-secondary">CSS Design</h6>
     <p className="card-text">Short bio</p>
-    <a href="https://github.com/kathrynfisher3700" className="card-link">GitHub</a>
-    <a href="#" className="card-link">LinkedIn</a>
+    <a href="https://github.com/kathrynfisher3700"  target="_blank" className="card-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/kathryn-dougherty-fisher/"  target="_blank" className="card-link">LinkedIn</a>
   </div>
 </div>
 
