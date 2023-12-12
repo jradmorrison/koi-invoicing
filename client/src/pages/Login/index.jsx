@@ -16,7 +16,7 @@ import Auth from '../../utils/auth';
 import './style.css';
 
 //import photo
-import koiimg from '../../assets/images/logo4.png'
+import koiimg from '../../assets/images/logo4.png';
 
 // login component
 const Login = () => {
@@ -64,9 +64,15 @@ const Login = () => {
   // return
   return (
     <main className="d-flex justify-content-center align-items-center min-vh-100 flex-column">
-      <div id="login" className="p-3 rounded-5 col-lg-3 col-md-6 col-10">
+      <div
+        id="login"
+        className="p-3 rounded-5 col-xl-3 col-lg-4 col-md-6 col-10">
         <div>
-          <div className="text-center heading"><img id="photo" src={koiimg}></img></div>
+          <div className="text-center heading">
+            <a href="/">
+              <img id="photo" src={koiimg} />
+            </a>
+          </div>
           <div className="text-center sub-heading">Sign-In</div>
         </div>
         <form onSubmit={handleFormSubmit}>
@@ -97,9 +103,7 @@ const Login = () => {
             <button className="btn btn-dark px-5" type="submit">
               Login
             </button>
-            <div className="py-1">
-              <a href="">Forgot Password?</a>
-            </div>
+            <div className="py-1">{/* <a href="">Forgot Password?</a> */}</div>
             <div className="">
               <a href="/signup">Click here to create an account</a>
             </div>

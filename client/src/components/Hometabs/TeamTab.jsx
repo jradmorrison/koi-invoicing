@@ -124,7 +124,7 @@ export default function TeamTab() {
         </div>
       </div>
       <div className="text-center">
-        <p>
+        <p className="text-light">
           The team connected at a Full-Stack Web Development Bootcamp provided
           by the University of Central Florida and Edex.
         </p>

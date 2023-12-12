@@ -39,6 +39,7 @@ const CreateInvoice = ({
       [name]: value,
     });
   };
+  
   const setDate = (date) => {
     setFormState({
       ...formState,
