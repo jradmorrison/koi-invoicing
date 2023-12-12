@@ -8,15 +8,10 @@ export default function TeamTab() {
   return (
     <div>
       <div className="d-flex justify-content-center">
-        <h3 className="text-center teamHeader mb-4">
+        <h3 className="text-center teamHeader mt-4">
           Meet the Masterminds <br /> Behind KOI Invoicing Services
         </h3>
       </div>
-
-      <div className="text-center about">
-        <p>Brandon Barnes, Jared Morrison, Trae Roy, Kathryn Dougherty</p>
-      </div>
-
       <div className="1 d-flex justify-content-center mt-5">
         <div className="2 ">
           <div className="card m-3" style={{ width: "20rem" }}>

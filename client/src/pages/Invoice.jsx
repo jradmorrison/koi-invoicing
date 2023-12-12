@@ -76,6 +76,10 @@ const Invoice = () => {
   }
 
   const handleDeleteInvoice = async (invoiceID) => {
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this invoice?'
+    );
+    if (confirmDelete == true) {
     try {
       const { data } = await deleteInvoice({
         variables: { id: invoiceID }
@@ -85,6 +89,7 @@ const Invoice = () => {
     } catch (err) {
       console.log(err);
     }
+  }
   }
 
   // return
