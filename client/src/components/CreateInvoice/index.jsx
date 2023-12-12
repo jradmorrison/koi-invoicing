@@ -86,16 +86,6 @@ const CreateInvoice = ({
       <div></div>
       <div className="p-3">
         <div className="fs-2 text-center mb-3">New Invoice</div>
-        <div className="mb-3"> 
-        <label className="form-label">Header</label>
-          <input
-            type="text"
-            className="form-control"
-            name="serviceTitle"
-            placeholder="Displayed on dashboard for easy recognition"
-            onChange={handleChange}
-          />
-        </div>
         <div className="mb-3">
           <label className="form-label">Client Full Name</label>
           <input

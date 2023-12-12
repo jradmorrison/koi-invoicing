@@ -108,6 +108,9 @@ const Signup = () => {
             <button className="btn btn-dark px-3" type="submit">
               Create Account
             </button>
+            <button type="button" class="btn btn-outline-secondary btn-sm">
+          Back to Login
+        </button>
           </div>
         </form>
       </div>

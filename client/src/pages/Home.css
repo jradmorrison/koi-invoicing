@@ -9,5 +9,38 @@
 } */
 
 .icon {
-    height: 120px;
+    height: 250px;
+}
+
+.about{
+    color: whitesmoke;
+    font-size: 25px;
+}
+.a1 {
+    margin-top: 80px;
+}
+
+.a2 {
+    margin-bottom: 100px;
+}
+
+.a3 {
+    margin-left: 100px;
+    margin-top: 80px;
+}
+
+.mobile {
+    height: 500px;
+}
+
+.web {
+    height: 350px;
+}
+
+.holder {
+    margin: 80px;
+}
+
+.teamHeader {
+    color: whitesmoke;
 }
