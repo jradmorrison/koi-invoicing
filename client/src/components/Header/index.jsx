@@ -10,6 +10,7 @@ const Header = (props) => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
     <header>
       <nav className="navbar">
@@ -25,7 +26,10 @@ const Header = (props) => {
           <div className="d-flex">
             <div className="mx-3 text-light text-end">
               <h5>{props.businessName}</h5>
-              <a className="" href={`/account/${props.businessId}`}>Account Settings</a>
+              <div style={{display: 'flex', flexDirection: 'column'}}>
+                <a className="" href={`/account/${props.businessId}`}>Account Settings</a>
+                <a href='' onClick={logout}>Logout</a>
+              </div>
             </div>
             <div className="mx-3 my-auto">
               <Avatar alt="Profile Image" src={'/static/images/avatar/3.jpg'} />
