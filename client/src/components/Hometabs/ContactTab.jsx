@@ -2,7 +2,7 @@ import { Navigate, Link } from 'react-router-dom';
 
 export default function ContactTab() {
   return (
-    <div className="justify-content-center bg-light container">
+    <div className="justify-content-center bg-light container contact">
       <div className=" text-center p-4">
         <h2>Join the best invoicing platform today!</h2>
       </div>
