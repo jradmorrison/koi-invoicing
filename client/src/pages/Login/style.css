@@ -1,20 +1,26 @@
 #login {
-    position: relative;
-    /* background-color: rgb(255, 255, 255); */
-    background-color: #B3B3C7;
-    /* opacity: 0.5; */
+  position: relative;
+  /* background-color: rgb(255, 255, 255); */
+  background-color: #b3b3c7;
+  /* opacity: 0.5; */
 }
 
 .heading {
-    color: var(--navyBlue);
-    font-size: 6rem;
+  color: var(--navyBlue);
+  font-size: 6rem;
 }
 
 .sub-heading {
-    color: var(--light);
-    font-size: 3rem;
+  color: var(--light);
+  font-size: 3rem;
 }
 
 #photo {
-    height: 200px;
+  height: 200px;
+}
+
+@media screen and (max-width: 412px) {
+  #photo {
+    height: 150px;
+  }
 }
