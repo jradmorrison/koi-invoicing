@@ -27,7 +27,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jradmorrison/koi-invoicing">
-    <img src="./assets/logo.png" alt="Logo" width="150" height="150">
+    <img src="./client/src/assets/images/logo1.png" alt="Logo" height="150">
   </a>
 
 <h1 align="center">Koi Invoicing</h1>
@@ -49,7 +49,6 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
@@ -77,7 +76,7 @@ To use this application, simply visit the deployed site <a href="https://books-b
 Here's a quick peek at what you can expect to see!
 
 
-<img src="./assets/screenshot1.png" alt="a screenshot" width="400px" ><img src="./assets/screenshot2.png" alt="a screenshot" width="400px" >
+<img src="./client/src/assets/images/invoiceScreenshot.png" alt="a screenshot" width="400px" ><img src="./client/src/assets/images/mobileScreenshot.png" alt="a screenshot" height="250px" >
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -106,7 +105,31 @@ Here's a quick peek at what you can expect to see!
 <!-- CONTRIBUTING -->
 ## Contributing
 
-If you wish to contribute to this project, get in contact with me! Various ways to contact me are listed in the Contact section.
+### Jared <span style="font-size: 12px"></span>
+
+<p>LinkedIn - <a href="https://www.linkedin.com/in/jradmorrison/">Jared Morrison</a></p>
+<p>Github - <a href="https://github.com/jradmorrison">jradmorrison</a></p>
+<hr>
+
+### Brandon <span style="font-size: 12px"></span>
+
+<p>LinkedIn - <a href="https://www.linkedin.com/in/brandon-b-tech/">Brandon Barnes</a></p>
+<p>Github - <a href="https://github.com/ThatZiro">ThatZiro</a></p>
+<hr>
+
+### Kathryn <span style="font-size: 12px"></span>
+
+<p>LinkedIn - <a href="https://www.linkedin.com/in/kathryn-dougherty-fisher/">Kathryn Dougherty (Fisher)</a></p>
+<p>Github - <a href="https://github.com/kathrynfisher3700">kathrynfisher3700</a></p>
+<hr>
+
+### Trae <span style="font-size: 12px"></span>
+
+<p>LinkedIn - <a href="https://www.linkedin.com/in/trae-roy-815a02244/">Trae Roy</a></p>
+<p>Github - <a href="https://github.com/Roesnware">Roesnware</a></p>
+<hr>
+
+If you wish to contribute to this project, get in touch!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -121,17 +144,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- CONTACT -->
-## Contact
-
-<h4>Email - <a href="mailto:jmorrison.m44@gmail.com">jmorrison.m44@gmail.com</a></h4>
-
-<h4>GitHub - <a href="https://github.com/jradmorrison">jradmorrison</a></h4>
-
-<h4>LinkdIn - <a href="https://linkedin.com/in/jradmorrison">jradmorrison</a></h4>
-
-<h4>Project Link - <a href="https://github.com/jradmorrison/koi-invoicing">Koi Invoicing</a></h4>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
