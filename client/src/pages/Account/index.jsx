@@ -19,10 +19,10 @@ const Account = () => {
     email: '',
   });
 
-  const { loading, data } = useQuery(GET_CURRENT_BUSINESS);
+  const { loading, data, refetch } = useQuery(GET_CURRENT_BUSINESS);
   const business = data?.currentBusiness || {};
-  
-  const [updateBusiness, {error}] = useMutation(UPDATE_BUSINESS);
+
+  const [updateBusiness, { error }] = useMutation(UPDATE_BUSINESS);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -50,18 +50,21 @@ const Account = () => {
     if (formState.name !== '' && formState.email !== '') {
       const businessUpdate = {
         name: formState.name,
-        email: formState.email
+        email: formState.email,
       };
 
       try {
-        const {data} = await updateBusiness({
-          variables: { id: }
-        })
+        const { data } = await updateBusiness({
+          variables: { id: business._id, businessUpdate: businessUpdate },
+        });
+        console.log(data);
+        closeModel();
+        refetch();
       } catch (err) {
-        
+        console.error(err);
       }
     }
-  }
+  };
 
   console.log(formState);
   return (
@@ -127,12 +130,12 @@ const Account = () => {
                   />
                 </div>
                 <div>
-                  <Button 
-                    variant='outlined' 
-                    color='success'
+                  <Button
+                    variant="outlined"
+                    color="success"
                     onClick={handleFormSubmit}>
-                      Update Account Details
-                    </Button>
+                    Update Account Details
+                  </Button>
                 </div>
               </div>
             </>

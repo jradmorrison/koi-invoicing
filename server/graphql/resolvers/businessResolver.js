@@ -78,17 +78,17 @@ const businessResolver = {
       { ID, businessUpdate: { name, email, password, companyLogo } }
     ) => {
       try {
-        const saltRounds = 10;
-        const salt = await bcrypt.genSalt(saltRounds);
-        const hashedPassword = await bcrypt.hash(password, salt);
+        // const saltRounds = 10;
+        // const salt = await bcrypt.genSalt(saltRounds);
+        // const hashedPassword = await bcrypt.hash(password, salt);
 
         const updatedBusiness = await Business.findByIdAndUpdate(
           new ObjectId(ID),
           {
             name,
             email,
-            password: hashedPassword,
-            companyLogo,
+            // password: hashedPassword,
+            // companyLogo,
           },
           { new: true }
         );
