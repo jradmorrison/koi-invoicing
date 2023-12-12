@@ -22,9 +22,6 @@ const businessSchema = new Schema({
     type: String,
     unique: true,
   },
-  // services: [{ type: Schema.Types.ObjectId, ref: 'Service' }],
-  // contracts: [{ type: Schema.Types.ObjectId, ref: 'Contract' }],
-  // clients: [{ type: Schema.Types.ObjectId, ref: 'Client' }],
   userSince: {
     type: Date,
     default: Date.now,

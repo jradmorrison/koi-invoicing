@@ -15,9 +15,8 @@ const invoiceResolver = {
     // read invoice by ID
     getInvoiceByID: async (_, { ID }) => {
       try {
-        const invoice = await Invoice.findById(new ObjectId(ID));
-
-        if (!invoice) {
+        const invoice = await Invoice.findById(new ObjectId(ID)).populate('businessId');
+        if (!invoice ) {
           throw new Error('Contract not found');
         }
 
@@ -60,7 +59,6 @@ const invoiceResolver = {
         },
       }
     ) => {
-      const now = new Date().toISOString();
       const newInvoice = {
         businessId,
         serviceTitle,
@@ -87,7 +85,7 @@ const invoiceResolver = {
           to: clientName,
           toEmail: clientEmail,
           invoice: `Invoice #${invoice._id}`,
-          invoiceDate: now,
+          invoiceDate: invoice.createdOn,
           paymentDueDate: dateDue,
           totalAmount: totalBalance.toString(),
           taxes: '0.00',
