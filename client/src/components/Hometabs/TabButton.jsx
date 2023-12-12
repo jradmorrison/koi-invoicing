@@ -7,7 +7,7 @@ export default function TabButton({ children, isActive, onClick }) {
   return (
     <button onClick={() => {
       onClick(); 
-    }} className='btn btn-light'>
+    }} className='btn btn-warning'>
       {children}
     </button>
   )
