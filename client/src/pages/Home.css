@@ -15,7 +15,19 @@
 
 .about{
     color: whitesmoke;
-    font-size: 20px;
+    font-size: 25px;
+}
+.a1 {
+    margin-top: 80px;
+}
+
+.a2 {
+    margin-bottom: 100px;
+}
+
+.a3 {
+    margin-left: 100px;
+    margin-top: 80px;
 }
 
 .mobile {
@@ -27,7 +39,7 @@
 }
 
 .holder {
-    justify-content: center;
+    margin: 80px;
 }
 
 .teamHeader {
