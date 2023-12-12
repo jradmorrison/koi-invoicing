@@ -167,6 +167,7 @@ const Invoice = () => {
                     borderRadius: '1rem',
                     backgroundColor: '#FDC447',
                     color: '#010144',
+                    width: '100%',
                   }}>
                   Make Payment
                 </button>
