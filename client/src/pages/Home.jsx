@@ -8,7 +8,7 @@ import { useQuery } from "@apollo/client";
 import "./Home.css";
 
 //import logo
-import koi from "../assets/images/logo1.png";
+import koi from "../assets/images/logoblue.png";
 
 import { useState, useTransition } from "react";
 import TabButton from "../components/Hometabs/TabButton.jsx";
@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <main>
       <div className=" d-flex justify-content-center">
-        <img src={koi}></img>{" "}
+        <img src={koi} className="icon"></img>{" "}
       </div>
       <div className="d-flex flex-column justify-content-center">
         <div className="d-flex justify-content-center gap-3 mt-5">
