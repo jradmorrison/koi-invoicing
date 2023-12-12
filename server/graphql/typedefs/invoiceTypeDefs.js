@@ -1,7 +1,7 @@
 module.exports = `
     type Invoice {
         _id: ID
-        businessId: ID
+        businessId: Business
         serviceTitle: String
         clientName: String
         clientEmail: String
@@ -9,6 +9,7 @@ module.exports = `
         status: String
         dateDue: String
         serviceProvided: String
+        createdOn: String
     }
 
     input InvoiceInput {
