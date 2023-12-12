@@ -8,7 +8,7 @@ export default function TeamTab() {
   return (
     <div>
       <div className="d-flex justify-content-center">
-        <h3 className="text-center teamHeader">
+        <h3 className="text-center teamHeader mb-4">
           Meet the Masterminds <br /> Behind KOI Invoicing Services
         </h3>
       </div>
@@ -24,7 +24,7 @@ export default function TeamTab() {
               <img src={brandon} className="icon"></img>
               <h5 className="card-title">Brandon Barnes</h5>
               <h6 className="card-subtitle mb-2 text-body-secondary">
-                Card subtitle
+                Full-Stack Developer
               </h6>
               <p className="card-text">Short bio</p>
               <a
@@ -75,7 +75,7 @@ export default function TeamTab() {
                 <img src={trae} className="icon"></img>
                 <h5 className="card-title">Trae Roy</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">
-                  Card subtitle
+                Full-Stack Developer
                 </h6>
                 <p className="card-text">short bio</p>
                 <a
