@@ -49,6 +49,8 @@ query Query($id: ID!) {
     _id
     clientEmail
     dateDue
+    clientName
+    serviceTitle
     serviceProvided
     status
     totalBalance
