@@ -74,8 +74,9 @@ const Invoice = () => {
   const handleDeleteInvoice = async (invoiceID) => {
     try {
       const { data } = await deleteInvoice({
-        variables: { invoiceID }
+        variables: { id: invoiceID }
       });
+      document.location.assign('/dashboard');
       console.log(data);
     } catch (err) {
       console.log(err);
