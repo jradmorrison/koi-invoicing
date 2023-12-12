@@ -1,4 +1,4 @@
-.background {
+/* .background {
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/fish-background-2.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -6,8 +6,41 @@
     z-index: 0;
     min-width: 100vw;
     min-height: 100vh;
-}
+} */
 
 .icon {
-    height: 120px;
+    height: 250px;
+}
+
+.about{
+    color: whitesmoke;
+    font-size: 25px;
+}
+.a1 {
+    margin-top: 80px;
+}
+
+.a2 {
+    margin-bottom: 100px;
+}
+
+.a3 {
+    margin-left: 100px;
+    margin-top: 80px;
+}
+
+.mobile {
+    height: 500px;
+}
+
+.web {
+    height: 350px;
+}
+
+.holder {
+    margin: 80px;
+}
+
+.teamHeader {
+    color: whitesmoke;
 }
