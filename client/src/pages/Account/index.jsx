@@ -69,9 +69,7 @@ const Account = () => {
     }
   };
 
-  
   const handleAccountDelete = async () => {
-    
     const confirmDelete = window.confirm(
       'Are you sure you want to delete your account?'
     );
@@ -80,15 +78,13 @@ const Account = () => {
         const { data } = await deleteBusiness({
           variables: { id: business._id },
         });
-        console.log(data);
-        window.location.replace('/')
+        Auth.logout();
       } catch (error) {
         console.error(error);
       }
     }
   };
 
-  // console.log(formState);
   return (
     <main className="">
       {loading ? (
