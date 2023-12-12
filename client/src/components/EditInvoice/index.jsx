@@ -59,7 +59,8 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
       const { data } = await updateInvoice({
         variables: { id: invoice._id, invoiceUpdate: invoiceInput },
       });
-      console.log(invoice._id)
+      console.log(invoice._id);
+      document.location.assign('/invoice/'+invoice._id);
 
       console.log(data);
     } catch (err) {
