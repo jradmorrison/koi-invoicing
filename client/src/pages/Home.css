@@ -9,5 +9,23 @@
 } */
 
 .icon {
-    height: 120px;
+    height: 250px;
+    margin: 50px;
+}
+
+.about{
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.mobile {
+    height: 500px;
+}
+
+.web {
+    height: 350px;
+}
+
+.holder {
+    justify-content: center;
 }
