@@ -1,12 +1,12 @@
 //import photos
-// // import brandon from '../../assets/images/brandonicon.png';
-// import brandon from require('https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/brandonIcon.png?raw=true');
-// // import trae from '../../assets/images/TraeIcon.png';
-// import trae from require('https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/TraeIcon.png?raw=true');
-// // import kathryn from '../../assets/images/kathryn-icon.png';
-// import kathryn from require('https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/kathryn-icon.png?raw=true');
-// // import jared from '../../assets/images/jared-icon.png';
-// import jared from require('https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/jared-icon.png?raw=true');
+// import brandon from '../../assets/images/brandonicon.png';
+import brandon from '@assets/images/brandonIcon.png';
+// import trae from '../../assets/images/TraeIcon.png';
+import trae from '@assets/images/TraeIcon.png';
+// import kathryn from '../../assets/images/kathryn-icon.png';
+import kathryn from '@assets/images/kathryn-icon.png';
+// import jared from '../../assets/images/jared-icon.png';
+import jared from '@assets/images/jared-icon.png';
 
 export default function TeamTab() {
   return (
@@ -20,7 +20,7 @@ export default function TeamTab() {
         <div className="2">
           <div className="card">
             <div className="card-body text-center">
-              <img src={require('https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/brandonIcon.png?raw=true')} className="icon"></img>
+              <img src={brandon} className="icon"></img>
               <h5 className="card-title">Brandon Barnes</h5>
               <h6 className="card-subtitle mb-2 text-body-secondary">
                 Full-Stack Developer
@@ -42,7 +42,7 @@ export default function TeamTab() {
           </div>
           <div className="card">
             <div className="card-body text-center">
-              <img src={require('https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/jared-icon.png?raw=true')} className="icon"></img>
+              <img src={jared} className="icon"></img>
               <h5 className="card-title">Jared Morrison</h5>
               <h6 className="card-subtitle mb-2 text-body-secondary">
                 Full Stack Developer
@@ -66,7 +66,7 @@ export default function TeamTab() {
         <div className="5">
           <div className="card">
             <div className="card-body text-center">
-              <img src={require('https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/TraeIcon.png?raw=true')} className="icon"></img>
+              <img src={trae} className="icon"></img>
               <h5 className="card-title">Trae Roy</h5>
               <h6 className="card-subtitle mb-2 text-body-secondary">
                 Full-Stack Developer
@@ -89,7 +89,7 @@ export default function TeamTab() {
           <div>
             <div className="card">
               <div className="card-body text-center">
-                <img src={require('https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/kathryn-icon.png?raw=true')} className="icon"></img>
+                <img src={kathryn} className="icon"></img>
                 <h5 className="card-title">Kathryn Dougherty</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">
                   CSS Design
