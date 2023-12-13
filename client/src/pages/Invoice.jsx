@@ -1,5 +1,5 @@
 import { Navigate, Link } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -61,14 +61,10 @@ const Invoice = () => {
 
   const [visibility, setVisibility] = useState(false);
 
-  const closeModal = () => {
-    setVisibility(false);
-    document.body.style.overflow = 'auto';
-  };
-
   const handleUpdateInvoice = async () => {
+    window.scrollTo(0, 0);
     setVisibility(true);
-    //document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
   };
 
   const handleDeleteInvoice = async (invoiceID) => {
@@ -84,9 +80,25 @@ const Invoice = () => {
     } catch (err) {
       console.log(err);
     }
-
   }
   }
+  //Media Query
+  const [isMobile, setIsMobile] = useState(false);
+  const [scale, setScale] = useState(1);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1300);
+      let scale = window.innerWidth / 750
+      if(scale > 1) scale = 1;
+      setScale(scale)
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  })
 
   // return
   return (
@@ -107,10 +119,20 @@ const Invoice = () => {
             display: 'flex',
             justifyContent: 'center',
             padding: '2rem',
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: '2rem',
+          }}
+        >
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            position: isMobile ? 'absolute' : 'relative',
+            zIndex: isMobile ? '-1' : '1'
           }}>
-          <PDFExport ref={pdfExportComponent} paperSize="A4">
-            <InvoiceToPDF invoice={invoice} extras={pdfExportComponent} />
-          </PDFExport>
+            <PDFExport scale={scale} ref={pdfExportComponent} paperSize="A4">
+              <InvoiceToPDF invoice={invoice} extras={pdfExportComponent} />
+            </PDFExport>
+          </div>
           <div
             style={{
               display: 'flex',

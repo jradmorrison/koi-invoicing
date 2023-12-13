@@ -1,15 +1,15 @@
 #createInvoiceForm {
-    background-color: whitesmoke;
-    z-index: 1000;
-    box-shadow: inset 0px 0px 10px;
+  background-color: whitesmoke;
+  z-index: 1000;
+  box-shadow: inset 0px 0px 10px;
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100vw;
-    min-height: 100vh;
-    z-index: 50;
-    background-color: rgb(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 50;
+  background-color: rgb(0, 0, 0, 0.7);
 }

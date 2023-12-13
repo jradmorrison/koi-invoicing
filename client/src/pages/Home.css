@@ -1,53 +1,95 @@
-/* .background {
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../assets/images/fish-background-2.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    z-index: 0;
-    min-width: 100vw;
-    min-height: 100vh;
-} */
-
 .icon {
-    height: 250px;
+  height: 250px;
 }
 
-.about{
-    color: whitesmoke;
-    font-size: 25px;
+.about {
+  color: whitesmoke;
+  font-size: 25px;
+  padding: 0 5rem;
 }
 .a1 {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 
 .a2 {
-    margin-bottom: 100px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .a3 {
-    margin-left: 100px;
-    margin-top: 80px;
+  margin-left: 100px;
+  margin-top: 80px;
 }
 
 .mobile {
-    height: 500px;
+  height: 500px;
 }
 
 .web {
-    height: 350px;
+  height: 350px;
 }
 
 .holder {
-    margin: 80px;
+  margin: 80px;
 }
 
 .teamHeader {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 
+.contact {
+  width: 50%;
+  padding: 20px;
+}
 
+.card {
+  width: 20rem;
+  margin: 2rem 1rem;
+}
 
-  .contact {
-    width: 50%;
-    padding: 20px;
+@media screen and (max-width: 996px) {
+  .web {
+    height: 200px;
   }
+
+  .mobile {
+    height: 350px;
+  }
+
+  .about {
+    font-size: 18px;
+    padding: 0 2rem;
+  }
+
+  .teamHeader {
+    font-size: 1.5rem;
+  }
+
+  .card .icon {
+    height: 175px;
+  }
+}
+
+@media screen and (max-width: 776px) {
+  .box1 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .box2 {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .about {
+    margin: 2rem auto;
+  }
+
+  .card {
+    margin: 3rem auto;
+  }
+
+  #one {
+    flex-direction: column;
+  }
+}
