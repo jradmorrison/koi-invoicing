@@ -60,7 +60,6 @@ const businessResolver = {
           name,
           email,
           password: hashedPassword,
-          companyLogo,
           userSince: new Date().toISOString(),
         };
         const business = await Business.create(newBusiness);
