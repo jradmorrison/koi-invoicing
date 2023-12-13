@@ -1,12 +1,12 @@
 //import photos
 // import brandon from '../../assets/images/brandonicon.png';
-import brandon from 'https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/brandonIcon.png?raw=true';
+import brandon from '../../../public/brandonicon.png';
 // import trae from '../../assets/images/TraeIcon.png';
-import trae from 'https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/TraeIcon.png?raw=true';
+import trae from '../../../public/TraeIcon.png';
 // import kathryn from '../../assets/images/kathryn-icon.png';
-import kathryn from 'https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/kathryn-icon.png?raw=true';
+import kathryn from '../../../public/kathryn-icon.png';
 // import jared from '../../assets/images/jared-icon.png';
-import jared from 'https://github.com/jradmorrison/koi-invoicing/blob/main/client/src/assets/images/jared-icon.png?raw=true';
+import jared from '../../../public/jared-icon.png';
 
 export default function TeamTab() {
   return (
