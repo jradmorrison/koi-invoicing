@@ -12,9 +12,7 @@ import CreateInvoice from '../../components/CreateInvoice';
 
 import { GET_CURRENT_BUSINESS } from '../../utils/queries';
 
-
 const Dashboard = () => {
-  console.log("test");
   const [visibility, toggleVisibility] = useState(false);
   const { loading, data, refetch } = useQuery(GET_CURRENT_BUSINESS);
   const business = data?.currentBusiness || {};
@@ -30,7 +28,7 @@ const Dashboard = () => {
 
   if (visibility == true) {
     document.body.style.overflow = 'hidden';
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   } else {
     document.body.style.overflow = 'auto';
   }

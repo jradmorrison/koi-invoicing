@@ -61,14 +61,10 @@ const Invoice = () => {
 
   const [visibility, setVisibility] = useState(false);
 
-  const closeModal = () => {
-    setVisibility(false);
-    document.body.style.overflow = 'auto';
-  };
-
   const handleUpdateInvoice = async () => {
+    window.scrollTo(0, 0);
     setVisibility(true);
-    //document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
   };
 
   const handleDeleteInvoice = async (invoiceID) => {

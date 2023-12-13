@@ -1,4 +1,4 @@
-import { Navigate, Link } from "react-router-dom";
+import { Navigate, Link } from 'react-router-dom';
 
 export default function ContactTab() {
   return (
@@ -10,9 +10,8 @@ export default function ContactTab() {
         <div className="text-center mb-4">
           <button type="button" class="btn btn-secondary">
             <Link
-              to={"/signup"}
-              className="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-            >
+              to={'/signup'}
+              className="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
               Click Here to Sign Up
             </Link>
           </button>
@@ -23,9 +22,8 @@ export default function ContactTab() {
         <div className="text-center">
           <button type="button" class="btn btn-secondary">
             <Link
-              to={"/login"}
-              className="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-            >
+              to={'/login'}
+              className="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
               Proceed to Login
             </Link>
           </button>

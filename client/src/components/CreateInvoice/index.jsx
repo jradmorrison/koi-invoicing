@@ -123,8 +123,8 @@ const CreateInvoice = ({
             rows="3"
             onChange={handleChange}></textarea>
         </div>
-        <div className="d-flex justify-content-around">
-          <div className="mb-3">
+        <div className="d-flex justify-content-between">
+          <div className="mb-3 me-1">
             <div>
               <label className="form-label">Amount Due</label>
               <div className="input-group-prepend">
