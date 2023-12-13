@@ -107,7 +107,7 @@ const Invoice = () => {
 
       <div>
         <Button style={{ margin: '1rem', color: '#D9D9D9' }} variant="text">
-          <Link to={'/dashboard'}>Back to Dashboard</Link>
+          <Link to={'/dashboard'} className='link-light'>Back to Dashboard</Link>
         </Button>
       </div>
 

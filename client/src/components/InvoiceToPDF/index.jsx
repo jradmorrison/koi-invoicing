@@ -10,7 +10,7 @@ const InvoiceToPDF = ({ invoice: { businessId: { name, _id }, clientEmail, clien
                 <div style={{ backgroundColor: "#FFFFFF", color: "#000000", padding: "1rem", width: "35rem", height: "50rem" }}>
                     <div style={{ padding: "1rem" }}>
                         <div style={{ display: "flex", justifyContent: "start", alignItems: "center", height: "5rem" }}>
-                            <img src="" style={{ aspectRatio: "1", width: "4rem", paddingRight: "1rem" }}></img>
+                            {/* <img src="" style={{ aspectRatio: "1", width: "4rem", paddingRight: "1rem" }}></img> */}
                             <h1 style={{ color: "black", fontWeight: "bolder", fontSize: "1.6rem" }}>{name}</h1>
                         </div>
                         <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingTop: "2rem" }}>
@@ -70,7 +70,7 @@ const InvoiceToPDF = ({ invoice: { businessId: { name, _id }, clientEmail, clien
                         </div>
                     </div>
                     <footer style={{ display: "flex", justifyContent: "start", paddingTop: "1rem", color: "black", height: "2rem", fontSize: "1rem" }}>
-                        <img src="" style={{ aspectRatio: "1", width: "2rem", paddingRight: "1rem" }}></img>
+                        {/* <img src="" style={{ aspectRatio: "1", width: "2rem", paddingRight: "1rem" }}></img> */}
                         <p>Koi Invoicing Services LLC</p>
                     </footer>
                 </div>
