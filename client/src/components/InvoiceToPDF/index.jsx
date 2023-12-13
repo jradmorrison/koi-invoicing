@@ -2,11 +2,11 @@ import { useQuery } from '@apollo/client';
 import formatDate from '../../utils/dateFormatter';
 
 // invoice component
-const InvoiceToPDF = ({ invoice: { businessId: { name, _id }, clientEmail, clientName, totalBalance, dateDue, serviceProvided, serviceTitle, createdOn } }) => {
+const InvoiceToPDF = ({ invoice: { businessId: { name, _id }, clientEmail, clientName, totalBalance, dateDue, serviceProvided, serviceTitle, createdOn }, scale }) => {
 
     return ( // return invoice page with invoice and 2 buttons
         <div style={{ display: "flex" }}>
-            <div style={{ paddingRight: "9rem" }}>
+            <div>
                 <div style={{ backgroundColor: "#FFFFFF", color: "#000000", padding: "1rem", width: "35rem", height: "50rem" }}>
                     <div style={{ padding: "1rem" }}>
                         <div style={{ display: "flex", justifyContent: "start", alignItems: "center", height: "5rem" }}>
@@ -52,7 +52,7 @@ const InvoiceToPDF = ({ invoice: { businessId: { name, _id }, clientEmail, clien
                                 width: "18rem", justifyContent: "space-between", alignItems: "center", paddingBottom: ".5rem"
                             }}>
                                 <p>Total</p>
-                                <p>Service Price</p>
+                                <p>{"$" + totalBalance.toFixed(2)}</p>
                             </div>
 
                             <div style={{
@@ -60,13 +60,13 @@ const InvoiceToPDF = ({ invoice: { businessId: { name, _id }, clientEmail, clien
                                 width: "18rem"
                             }}>
                                 <p>Taxes</p>
-                                <p>Tax Amount</p>
+                                <p>{"$" + "0.00"}</p>
                             </div>
                         </div>
 
                         <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingLeft: "15rem", paddingTop: ".2rem", width: "17rem", fontSize: "1.2rem", borderTop: "1px solid #00000", boxSizing: "content-box" }}>
                             <h3 style={{ paddingRight: "5rem", fontSize: "1.2rem" }}>Total Due</h3>
-                            <h3 style={{ paddingRight: "2rem", fontSize: "1.2rem" }}>${totalBalance}</h3>
+                            <h3 style={{ paddingRight: "2rem", fontSize: "1.2rem" }}>{"$" + totalBalance.toFixed(2)}</h3>
                         </div>
                     </div>
                     <footer style={{ display: "flex", justifyContent: "start", paddingTop: "1rem", color: "black", height: "2rem", fontSize: "1rem" }}>
