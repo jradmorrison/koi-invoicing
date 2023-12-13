@@ -15,7 +15,7 @@ const Header = (props) => {
     <header>
       <nav className="navbar">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             <img
               src={koi}
               alt="Logo"

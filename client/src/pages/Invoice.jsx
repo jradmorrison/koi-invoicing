@@ -1,5 +1,5 @@
 import { Navigate, Link } from 'react-router-dom';
-import {useEffect, useRef, useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -57,33 +57,35 @@ const Invoice = () => {
       'Are you sure you want to delete this invoice?'
     );
     if (confirmDelete == true) {
-    try {
-      const { data } = await deleteInvoice({
-        variables: { id: invoiceID },
-      });
-      document.location.assign('/dashboard');
-    } catch (err) {
-      console.log(err);
+      try {
+        const { data } = await deleteInvoice({
+          variables: { id: invoiceID },
+        });
+        document.location.assign('/dashboard');
+      } catch (err) {
+        console.log(err);
+      }
     }
-  }
-  }
+  };
   //Media Query
   const [isMobile, setIsMobile] = useState(false);
-  const [scale, setScale] = useState(1);
+
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1300);
-      let scale = window.innerWidth / 750
-      if(scale > 1) scale = 1;
-      setScale(scale)
+      setIsMobile(window.innerWidth < 1200);
+      if (isMobile == true) {
+        document.body.style.overflow = 'hidden';
+      } else document.body.style.overflow = 'auto';
     };
     handleResize();
     window.addEventListener('resize', handleResize);
-    
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  })
+  });
+
+  if (isMobile == true) document.body.style.overflow = 'hidden';
 
   // return
   return (
@@ -92,7 +94,9 @@ const Invoice = () => {
 
       <div>
         <Button style={{ margin: '1rem', color: '#D9D9D9' }} variant="text">
-          <Link to={'/dashboard'} className='link-light'>Back to Dashboard</Link>
+          <Link to={'/dashboard'} className="link-light">
+            Back to Dashboard
+          </Link>
         </Button>
       </div>
 
@@ -103,18 +107,18 @@ const Invoice = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            // padding: '2rem',
+            padding: '2rem',
             flexDirection: isMobile ? 'column' : 'row',
             gap: '2rem',
-          }}
-        >
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            position: isMobile ? 'absolute' : 'relative',
-            zIndex: isMobile ? '-1' : '1'
           }}>
-            <PDFExport scale={scale} ref={pdfExportComponent} paperSize="A4">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              position: isMobile ? 'absolute' : 'relative',
+              zIndex: isMobile ? '-1' : '1',
+            }}>
+            <PDFExport ref={pdfExportComponent} paperSize="A4">
               <InvoiceToPDF invoice={invoice} extras={pdfExportComponent} />
             </PDFExport>
           </div>
