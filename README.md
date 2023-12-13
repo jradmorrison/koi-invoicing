@@ -35,7 +35,7 @@
   <p align="center">
     A MERN stack app for small businesses and individuals to create invoices for services rendered.
     <br><br>
-    <a href="https://books-books-books-b6mk.onrender.com/" target="_blank">Visit the deployed site here</a>
+    <a href="https://koi-invoicing.onrender.com" target="_blank">Visit the deployed site here</a>
   </p>
 </div>
 
@@ -71,7 +71,7 @@ No installation necessary
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-To use this application, simply visit the deployed site <a href="https://books-books-books-b6mk.onrender.com/" target="_blank">here</a>
+To use this application, simply visit the deployed site <a href="https://koi-invoicing.onrender.com" target="_blank">here</a>
 
 Here's a quick peek at what you can expect to see!
 
