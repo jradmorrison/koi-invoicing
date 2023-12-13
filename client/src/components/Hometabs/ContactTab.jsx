@@ -8,7 +8,7 @@ export default function ContactTab() {
           <h2>Join the best invoicing platform today!</h2>
         </div>
         <div className="text-center mb-4">
-          <button type="button" class="btn btn-secondary">
+          <button type="button" className="btn btn-secondary">
             <Link
               to={'/signup'}
               className="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
@@ -20,7 +20,7 @@ export default function ContactTab() {
           <h3>Already a member?</h3>
         </div>
         <div className="text-center">
-          <button type="button" class="btn btn-secondary">
+          <button type="button" className="btn btn-secondary">
             <Link
               to={'/login'}
               className="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
