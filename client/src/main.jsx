@@ -10,7 +10,7 @@ import Signup from './pages/Signup/Signup.jsx';
 import Login from './pages/Login';
 import ErrorPage from './pages/ErrorPage';
 import Dashbaord from './pages/Dashboard';
-import Invoice from './pages/Invoice.jsx';
+import Invoice from './pages/Invoice';
 import Account from './pages/Account';
 
 // define router paths

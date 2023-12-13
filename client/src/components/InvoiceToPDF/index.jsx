@@ -1,11 +1,13 @@
 import { useQuery } from '@apollo/client';
 import formatDate from '../../utils/dateFormatter';
 
+
+
 // invoice component
 const InvoiceToPDF = ({ invoice: { businessId: { name, _id }, clientEmail, clientName, totalBalance, dateDue, serviceProvided, serviceTitle, createdOn } }) => {
 
     return ( // return invoice page with invoice and 2 buttons
-        <div style={{ display: "flex" }}>
+        <div className="printInvoice" style={{ display: "flex" }}>
             <div style={{ paddingRight: "9rem" }}>
                 <div style={{ backgroundColor: "#FFFFFF", color: "#000000", padding: "1rem", width: "35rem", height: "50rem" }}>
                     <div style={{ padding: "1rem" }}>
