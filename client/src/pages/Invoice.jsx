@@ -19,18 +19,6 @@ import InvoiceToPDF from '../components/InvoiceToPDF';
 import EditInvoice from '../components/EditInvoice';
 import formatDate from '../utils/dateFormatter.js';
 
-const demoInvoice = {
-  invoiceID: '92842',
-  businessID: '123',
-  clientEmail: 'democlient@email.com',
-  totalBalance: '100',
-  status: 'Overdue',
-  dateDue: '12/04/2023',
-  serviceProvided: 'Created landing page for site',
-  serviceTitle: 'Website Development',
-  createdOn: '11/26/2023',
-};
-
 // invoice page component
 const Invoice = () => {
   const params = useParams();
@@ -44,9 +32,6 @@ const Invoice = () => {
   const business = invoice.businessId || [];
 
   const [deleteInvoice, { err }] = useMutation(DELETE_INVOICE);
-
-  console.log(invoice);
-  console.log(business);
 
   // for exporting to pdf
   const pdfExportComponent = useRef(null);
@@ -118,7 +103,7 @@ const Invoice = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            padding: '2rem',
+            // padding: '2rem',
             flexDirection: isMobile ? 'column' : 'row',
             gap: '2rem',
           }}
@@ -138,7 +123,7 @@ const Invoice = () => {
               display: 'flex',
               flexDirection: 'column',
               backgroundColor: '#010144',
-              paddingTop: '16rem',
+              paddingTop: '3rem',
               paddingLeft: '1rem',
               paddingRight: '1rem',
               borderRadius: '2rem',
@@ -149,13 +134,13 @@ const Invoice = () => {
                 flexDirection: 'column',
                 color: '#D9D9D9',
               }}>
-              <h1 style={{ fontSize: '2.2rem', padding: '0' }}>
+              <h1 style={{ fontSize: '2rem', padding: '0' }}>
                 Invoice - {invoice.serviceTitle}
               </h1>
-              <p style={{ fontSize: '1.5rem', padding: '0', margin: '0' }}>
+              <p style={{ fontSize: '1.3rem', padding: '0', margin: '0' }}>
                 Date Billed: {formatDate(invoice.createdOn)}
               </p>
-              <p style={{ fontSize: '1.5rem', padding: '0', marginTop: '0' }}>
+              <p style={{ fontSize: '1.2rem', padding: '0', marginTop: '0' }}>
                 Ref ID: {invoice._id}
               </p>
             </div>
