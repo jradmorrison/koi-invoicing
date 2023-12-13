@@ -1,8 +1,12 @@
 //import photos
-import brandon from '../../assets/images/brandonicon.png';
-import trae from '../../assets/images/TraeIcon.png';
-import kathryn from '../../assets/images/kathryn-icon.png';
-import jared from '../../assets/images/jared-icon.png';
+// import brandon from '../../assets/images/brandonicon.png';
+import brandon from './assets/images/brandonIcon.png';
+// import trae from '../../assets/images/TraeIcon.png';
+import trae from './assets/images/TraeIcon.png';
+// import kathryn from '../../assets/images/kathryn-icon.png';
+import kathryn from './assets/images/kathryn-icon.png';
+// import jared from '../../assets/images/jared-icon.png';
+import jared from './assets/images/jared-icon.png';
 
 export default function TeamTab() {
   return (
