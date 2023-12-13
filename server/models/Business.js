@@ -20,7 +20,6 @@ const businessSchema = new Schema({
   },
   companyLogo: {
     type: String,
-    unique: true,
   },
   userSince: {
     type: Date,
