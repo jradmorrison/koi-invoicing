@@ -1,17 +1,17 @@
 :root {
   --navyBlue: #010144;
-  --gold: #FDC447;
-  --light: #D9D9D9;
-  --dark: #1E1E1E;
-  --red: #3E0000;
-  --lightbrown: #BFA6A2;
-  --tan: #FFFADE;
+  --gold: #fdc447;
+  --light: #d9d9d9;
+  --dark: #1e1e1e;
+  --red: #3e0000;
+  --lightbrown: #bfa6a2;
+  --tan: #fffade;
 }
 /* * {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 } */
 * {
-  font-family:Verdana, Geneva, Tahoma, sans-serif
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -23,7 +23,8 @@ a {
 }
 
 .background {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('./assets/images/fish-background-2.png');
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('./assets/images/fish-background-2.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

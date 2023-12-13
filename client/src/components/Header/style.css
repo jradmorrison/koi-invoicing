@@ -1,3 +1,17 @@
 .navbar {
   background-color: var(--navyBlue);
 }
+
+.navbar a {
+  color: var(--light);
+}
+
+.navbar a:hover {
+  color: var(--gold);
+}
+
+@media screen and (max-width: 460px) {
+  .navbar img {
+    height: 60px;
+  }
+}
