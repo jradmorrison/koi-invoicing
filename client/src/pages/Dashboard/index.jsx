@@ -62,7 +62,7 @@ const Dashboard = () => {
                   ))}
                 </>
               ) : (
-                <div className="text-center">No invoices yet!</div>
+                <div className="text-center fs-2">No invoices yet!</div>
               )}
             </div>
           </div>
