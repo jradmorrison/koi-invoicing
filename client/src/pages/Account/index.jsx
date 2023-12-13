@@ -93,7 +93,7 @@ const Account = () => {
         <>
           <div className="p-3">
             <a href="/dashboard">
-              <Button>Back to dashboard</Button>
+              <Button className='link-light'>Back to dashboard</Button>
             </a>
           </div>
           <div className="container bg-light rounded-4 p-3">
