@@ -18,9 +18,9 @@ const businessSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  companyLogo: {
-    type: String,
-  },
+  // companyLogo: {
+  //   type: String,
+  // },
   userSince: {
     type: Date,
     default: Date.now,
