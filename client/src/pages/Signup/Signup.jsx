@@ -50,7 +50,7 @@ const Signup = () => {
         name: formState.businessName,
         email: formState.email,
         password: formState.password,
-        companyLogo: 'null',
+        // companyLogo: 'null',
       };
       const { data } = await createBusiness({
         variables: { businessInput },
@@ -114,7 +114,7 @@ const Signup = () => {
             <button className="btn btn-dark px-3 mb-2" type="submit">
               Create Account
             </button>
-            <a href="/login" class="btn btn-outline-secondary btn-sm">
+            <a href="/login" className="btn btn-outline-secondary btn-sm">
               Back to Login
             </a>
           </div>

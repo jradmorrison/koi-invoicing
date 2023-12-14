@@ -20,7 +20,6 @@ mutation Mutation($id: ID!, $businessUpdate: BusinessUpdate!) {
     _id
     name
     email
-    companyLogo
   }
 }
 `;

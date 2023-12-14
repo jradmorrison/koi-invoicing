@@ -50,7 +50,9 @@ const businessResolver = {
     // create business
     createBusiness: async (
       _,
-      { businessInput: { name, email, password, companyLogo } }
+      { businessInput: { name, email, password, 
+        // companyLogo 
+      } }
     ) => {
       try {
         const saltRounds = 10;
@@ -74,7 +76,12 @@ const businessResolver = {
     // update business
     updateBusiness: async (
       _,
-      { ID, businessUpdate: { name, email, password, companyLogo } }
+      { ID, businessUpdate: { 
+        name, 
+        email, 
+        // password, 
+        // companyLogo
+       } }
     ) => {
       try {
         // const saltRounds = 10;
