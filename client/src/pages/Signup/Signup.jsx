@@ -50,7 +50,7 @@ const Signup = () => {
         name: formState.businessName,
         email: formState.email,
         password: formState.password,
-        companyLogo: 'null',
+        // companyLogo: 'null',
       };
       const { data } = await createBusiness({
         variables: { businessInput },
