@@ -71,7 +71,7 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
         </Button>
       </div>
       <div className="p-3">
-        <div className="fs-2 text-center mb-3">New Invoice</div>
+        <div className="fs-2 text-center mb-3">Edit Invoice</div>
         <div className="mb-3">
           <label className="form-label">Client Full Name</label>
           <input
@@ -89,7 +89,7 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
             type="email"
             className="form-control"
             name="clientEmail"
-            placeholder="name@example.com"
+            placeholder="johndoe@email.com"
             onChange={handleChange}
             value={formState.clientEmail}
           />
@@ -100,7 +100,7 @@ const EditInvoice = ({ visibility, toggleVisibility, invoice }) => {
             type="text"
             className="form-control"
             name="serviceTitle"
-            placeholder="Short title"
+            placeholder="Single page web design"
             onChange={handleChange}
             value={formState.serviceTitle}
           />
